@@ -86,6 +86,8 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Use case diagram
 
+![Cardy B's use case diagram](https://raw.githubusercontent.com/softeng-feup/open-cx-b/master/docs/Cardy%20B%20Use%20Case%20Diagram%20by%20open-cx-b.png)
+
 #### Attendees
 Cardy 🅱️'s use cases for a conference attendee is to easily make and manage
 their connections with other participants of the conference. To that end, they
@@ -124,3 +126,4 @@ For each user story you should write also the acceptance tests (textually in Ghe
 At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. MoSCoW method) and the team should add an estimative of the effort to implemente it, in t-shirt sizes (XS, S, M, L, XL).
 
 ### Domain model
+![Cardy B's domain model diagram](https://raw.githubusercontent.com/softeng-feup/open-cx-b/master/docs/Cardy%20B%20Domain%20Model%20by%20open-cx-b.png)
