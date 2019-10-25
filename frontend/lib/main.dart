@@ -3,7 +3,6 @@ import 'dart:async';
 import 'businesscard.dart';
 //import 'package:flutter_screenutil/flutter_screenutil.dart'
 
-
 void main(){
   runApp(new MaterialApp(
     home: new MyApp(),
@@ -20,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     new Future.delayed(
-        const Duration(seconds: 3, milliseconds: 500),
+        const Duration(seconds: 1, milliseconds: 500),
             () =>
             Navigator.push(
               context,
@@ -173,22 +172,28 @@ class MainScreen extends StatelessWidget {
                 height: 0.8 * MediaQuery.of(context).size.width,
                 child: Stack(
                   alignment: Alignment.center,
-                  children: _getBusinessCard(),
+                  children: _getBusinessCard(context),
                 ),
               ),
               Expanded(
                 child: Container(),
               ),
+              Container(
+                alignment: Alignment.bottomRight,
+                padding: EdgeInsets.only(bottom: 0.07 * MediaQuery.of(context).size.height,
+                    right: 0.1 * MediaQuery.of(context).size.width),
+
+                child:Container(
+                  child: cardOptions(),
+                ),
+              ),
             ],
-          ),
-          SizedBox(
-              height: 0.5 * MediaQuery.of(context).size.height
           ),
         ],
       ),
     );
   }
-  List<Widget> _getBusinessCard(){
+  List<Widget> _getBusinessCard(BuildContext context){
     List<BusinessCard> cards =  new List();
     double numberOfCards = 4;
     cards.add(BusinessCard(218, 44, 56, 10));
@@ -203,7 +208,7 @@ class MainScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height:150,
+              height: 150,
               child:Image.asset('images/photo.png'),
             ),
             Container(
@@ -217,6 +222,7 @@ class MainScreen extends StatelessWidget {
           ]
         )
     );
+
     for (int i = 0; i < numberOfCards; i++) {
       cardList.add(Positioned(
         top: cards[i].margin,
@@ -243,7 +249,7 @@ class MainScreen extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Container(
               width: 300-(15*(numberOfCards-i)),
-              height: 230,
+              height: 0.3 * MediaQuery.of(context).size.height,
               child: info,
             ),
           ),
@@ -253,3 +259,49 @@ class MainScreen extends StatelessWidget {
     return cardList;
   }
 }
+
+Widget cardOptions() => PopupMenuButton(
+
+  itemBuilder: (context) {
+    var list = List<PopupMenuEntry<Object>>();
+    list.add(
+      PopupMenuItem(
+        child: Text("Add Card through:"),
+        value: 1,
+      ),
+    );
+    list.add(
+      PopupMenuDivider(
+        height: 10,
+      ),
+    );
+    list.add(
+      CheckedPopupMenuItem(
+        child: Text(
+          "NFC",
+          style: TextStyle(color: Colors.blueAccent),
+        ),
+        value: 2,
+        checked: true,
+      ),
+    );
+
+    list.add(
+      CheckedPopupMenuItem(
+        child: Text(
+          "Other",
+          style: TextStyle(color: Colors.blueAccent),
+        ),
+        value: 2,
+        checked: true,
+      ),
+    );
+
+    return list;
+  },
+  icon: Icon(
+    Icons.add,
+    size: 50,
+    color: Colors.red,
+  ),
+);
