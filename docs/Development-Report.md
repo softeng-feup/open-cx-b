@@ -1,6 +1,6 @@
-# openCX-*your module name* Development Report
+# openCX-*Cardy 🅱️* Development Report
 
-Welcome to the documentation pages of the *Cardy 🅱️* of **openCX**!
+Welcome to the documentation pages for *Cardy 🅱️* of **openCX**!
 
 You can find here detailed information about the (sub)product, hereby mentioned as module, from a high-level vision to low-level implementation decisions, a kind of Software Development Report (see [template](https://github.com/softeng-feup/open-cx/blob/master/docs/templates/Development-Report.md)), organized by discipline (as of RUP):
 
@@ -86,7 +86,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Use case diagram
 
-![Cardy B's use case diagram](https://raw.githubusercontent.com/softeng-feup/open-cx-b/master/docs/use-case-diagram.png)
+![Cardy B's use case diagram](use-case-diagram.png)
 
 #### Attendees
 Cardy 🅱️'s use cases for a conference attendee is to easily make and manage
@@ -109,21 +109,12 @@ As a representative of a sponsor, in addition to all of the above, also needs:
 * To have a way to collect conections unnatended (e.g. for a sponsor stand)
 
 ### User stories
-This section will contain the requirements of the product described as **user stories**, organized in a global **user story map** with **user roles** or **themes**.
 
-For each theme, or role, you may add a small description here. User stories should be detailed in the tool you decided to use for project management (e.g. trello or github projects).
-
-A user story is a description of desired functionality told from the perspective of the user or customer. A starting template for the description of a user story is
-
-*As a < user role >, I want < goal > so that < reason >.*
-
-You add more details after, but the shorter and complete, the better. In order to decide if the user story is good, please follow the INVEST guidelines.
-
-After the user story text, you should add a draft of the corresponding user interfaces, a simple mockups or drafts, if applicable.
-
-For each user story you should write also the acceptance tests (textually in Gherkin), ie, a description of situations that will help to confirm that the system satisfies the requirements addressed in the user story.
-
-At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. MoSCoW method) and the team should add an estimative of the effort to implemente it, in t-shirt sizes (XS, S, M, L, XL).
+This section will contain the requirements of the product described as **user**
+**stories**, organized in a global **user story map** with **user roles** or 
+**themes**. They will be added as the project is developed . In the meantime,
+if you are in a project oversight position, as the professors are, you can
+contact us to take a look at our *Trello* project board.
 
 ### Domain model
 ![Cardy B's domain model diagram](domain-model.png)
