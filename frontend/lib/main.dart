@@ -145,6 +145,11 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 180, 0, 0),
+        title: Image.asset('images/white_logo.png'),
+        centerTitle: true
+      ),
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -152,24 +157,50 @@ class MainScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 0.05 * MediaQuery.of(context).size.height,
-                    left: 0.01 * MediaQuery.of(context).size.width,
-                    right: 0.7 * MediaQuery.of(context).size.width),
-                child: Image.asset('images/logo.png'),
+                padding: EdgeInsets.only(top: 0.01 * MediaQuery.of(context).size.height,)
               ),
               Container(
                 alignment: Alignment.center,
                 child: Container(
-                  padding: EdgeInsets.all(0.2 * MediaQuery.of(context).size.height,),
+                  padding: EdgeInsets.all(0.025 * MediaQuery.of(context).size.height,),
                   height: 0.2 * MediaQuery.of(context).size.height,
-                  width: 0.5 * MediaQuery.of(context).size.height,
+                  width: 0.55 * MediaQuery.of(context).size.height,
+                  child:Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(0.02 * MediaQuery.of(context).size.height,),
+                        height: 0.15 * MediaQuery.of(context).size.height,
+                        width: 0.15 * MediaQuery.of(context).size.height,
+                        child: ClipRRect(
+                          borderRadius: new BorderRadius.circular(100.0),
+                          child: Image.asset('images/photo.png'),
+                       ),
+                      ),
+                      Container(
+                        child: Text(
+                          'Chico da Tina ',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ]
+                  ),
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    color: Color.fromARGB(255, 180, 20, 20),
+                    boxShadow:[
+                      BoxShadow(
+                          color: Colors.black54,
+                          offset: Offset(0.0, 10.0),
+                          blurRadius: 10.0
+                      )
+                    ],
                   ),
                 )
               ),
               Container(
-                height: 0.8 * MediaQuery.of(context).size.width,
+                height: 0.7 * MediaQuery.of(context).size.width,
                 child: Stack(
                   alignment: Alignment.center,
                   children: _getBusinessCard(context),
@@ -180,7 +211,7 @@ class MainScreen extends StatelessWidget {
               ),
               Container(
                 alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(bottom: 0.07 * MediaQuery.of(context).size.height,
+                padding: EdgeInsets.only(bottom: 0.02 * MediaQuery.of(context).size.height,
                     right: 0.1 * MediaQuery.of(context).size.width),
 
                 child:Container(
@@ -195,11 +226,15 @@ class MainScreen extends StatelessWidget {
   }
   List<Widget> _getBusinessCard(BuildContext context){
     List<BusinessCard> cards =  new List();
-    double numberOfCards = 4;
+    double numberOfCards = 3;
     cards.add(BusinessCard(218, 44, 56, 10));
     cards.add(BusinessCard(34, 111, 84, 20));
     cards.add(BusinessCard(135, 195, 143, 30));
     cards.add(BusinessCard(95, 180, 156, 40));
+    cards.add(BusinessCard(5, 255, 60, 50));
+    cards.add(BusinessCard(34, 111, 84, 60));
+    cards.add(BusinessCard(135, 195, 143, 70));
+    cards.add(BusinessCard(95, 180, 156, 80));
     List<Widget> cardList = new List();
 
     Widget info = new Container(
@@ -208,12 +243,17 @@ class MainScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: 150,
-              child:Image.asset('images/photo.png'),
+              padding: EdgeInsets.all(0.02 * MediaQuery.of(context).size.height,),
+              height: 0.15 * MediaQuery.of(context).size.height,
+              width: 0.15 * MediaQuery.of(context).size.height,
+              child: ClipRRect(
+                borderRadius: new BorderRadius.circular(100.0),
+                child: Image.asset('images/photo.png'),
+             ),
             ),
             Container(
               child: Text(
-                'Nicolas Kim Coppola ',
+                'Chico da Tina ',
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -237,8 +277,8 @@ class MainScreen extends StatelessWidget {
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Container(
-              width: 300-(15*(numberOfCards-i)),
-              height: 230,
+              width: 300-(3*(numberOfCards-i)),
+              height: 0.3 * MediaQuery.of(context).size.height,
               child: info,
             ),
           ),
@@ -248,7 +288,7 @@ class MainScreen extends StatelessWidget {
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Container(
-              width: 300-(15*(numberOfCards-i)),
+              width: 300-(3*(numberOfCards-i)),
               height: 0.3 * MediaQuery.of(context).size.height,
               child: info,
             ),
