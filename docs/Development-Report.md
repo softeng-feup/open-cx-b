@@ -1,6 +1,6 @@
-# openCX-*Cardy 🅱️* Development Report
+# openCX-*Cardy B* Development Report
 
-Welcome to the documentation pages for *Cardy 🅱️* of **openCX**!
+Welcome to the documentation pages for *Cardy B* of **openCX**!
 
 You can find here detailed information about the (sub)product, hereby mentioned as module, from a high-level vision to low-level implementation decisions, a kind of Software Development Report (see [template](https://github.com/softeng-feup/open-cx/blob/master/docs/templates/Development-Report.md)), organized by discipline (as of RUP):
 
@@ -44,7 +44,7 @@ represented a solution to the circumstances at hand. They are:
  * A medium to showcase appealing design
 
 What if you could bridge these advantages and modern technologies to have your
-cake and eat it too? *Cardy 🅱️* aims to do just that.
+cake and eat it too? *Cardy B* aims to do just that.
 
 It is an innovative digital networking system, using the latest in interactive
 technologies to provide seamless, paperless networking to the participants of
@@ -60,17 +60,17 @@ your conference. With this system in place, your users can:
  * Look cool while doing all of it
 
 We understand that sometimes there is an option between interaction and
-convenience, but with *Cardy 🅱️* you can get them both, you don't need to
+convenience, but with *Cardy B* you can get them both, you don't need to
 choose.
 
-No plan 🅱️ needed.
+No plan B needed.
 
 ## Elevator Pitch
 Have you recently been to a conference? How many business cards did you collect?
 
 If I had to hazard a guess, it was a pain in the ass to  store them all, and to follow up on them.
 
-Our new system, Cardy 🅱️, is going to solve just that. Just pull out your
+Our new system, Cardy B, is going to solve just that. Just pull out your
 smartphone and scan their badge, and you'll get their cards just like that.
 
 \*snap fingers\*
@@ -89,7 +89,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 ![Cardy B's use case diagram](use-case-diagram.png)
 
 #### Attendees
-Cardy 🅱️'s use cases for a conference attendee is to easily make and manage
+Cardy B's use cases for a conference attendee is to easily make and manage
 their connections with other participants of the conference. To that end, they
 would have utility for:
   * Facilities to set their profile
@@ -98,7 +98,7 @@ would have utility for:
   * Ability to perform CRUD operations on their connections
 
 #### Speakers
-Cardy 🅱️'s use cases for a speaker, in addition to those of a normal attendee,
+Cardy B's use cases for a speaker, in addition to those of a normal attendee,
 includes the following:
   * Ability to publicise their profile, e.g. as a card, in their presentations
 
