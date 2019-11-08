@@ -126,4 +126,4 @@ For each user story you should write also the acceptance tests (textually in Ghe
 At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. MoSCoW method) and the team should add an estimative of the effort to implemente it, in t-shirt sizes (XS, S, M, L, XL).
 
 ### Domain model
-![Cardy B's domain model diagram](https://raw.githubusercontent.com/softeng-feup/open-cx-b/master/docs/domain-model.png)
+![Cardy B's domain model diagram](domain-model.png)
