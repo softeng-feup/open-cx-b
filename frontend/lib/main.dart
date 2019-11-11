@@ -369,6 +369,89 @@ class Profile extends StatelessWidget {
           title: Image.asset('images/white_logo.png'),
           centerTitle: true
       ),
+      body: Stack(
+          children: <Widget>[
+           SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(top: 0.1 * MediaQuery.of(context).size.height,
+                    left: 0.3 * MediaQuery.of(context).size.width,
+                    right: 0.3 * MediaQuery.of(context).size.width),
+                  child: ClipRRect(
+                    borderRadius: new BorderRadius.circular(1000.0),
+                    child: Image.asset('images/photo.png'),
+                ),
+                ),
+                Container(
+                  child: Text(
+                    'Chico da Tina',
+                      style: TextStyle(fontSize: 36,fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                    top: 0.03 * MediaQuery.of(context).size.width,
+                    right: 0.7 * MediaQuery.of(context).size.width,),
+                  child: Text(
+                    'Email',
+                    style: TextStyle(color: Colors.grey, fontSize: 18,fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                        left: 0.1 * MediaQuery.of(context).size.width,
+                        right: 0.1 * MediaQuery.of(context).size.width),
+                  child: TextField(
+                    onChanged: (text) {
+                      print("Ok: $text");
+                    },
+                  )
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                    top: 0.03 * MediaQuery.of(context).size.width,
+                    right: 0.65 * MediaQuery.of(context).size.width,),
+                  child: Text(
+                    'Website',
+                    style: TextStyle(color: Colors.grey, fontSize: 18,fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                    padding: EdgeInsets.only(
+                        left: 0.1 * MediaQuery.of(context).size.width,
+                        right: 0.1 * MediaQuery.of(context).size.width),
+                    child: TextField(
+                      onChanged: (text) {
+                        print("Ok: $text");
+                      },
+                    )
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                    top: 0.03 * MediaQuery.of(context).size.width,
+                    right: 0.65 * MediaQuery.of(context).size.width,),
+                  child: Text(
+                    'LinkedIn',
+                    style: TextStyle(color: Colors.grey, fontSize: 18,fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                    padding: EdgeInsets.only(
+                        left: 0.1 * MediaQuery.of(context).size.width,
+                        right: 0.1 * MediaQuery.of(context).size.width),
+                    child: TextField(
+                      onChanged: (text) {
+                        print("Ok: $text");
+                      },
+                    )
+                )
+              ],
+            )
+           ),
+          ],
+      )
     );
   }
 }
