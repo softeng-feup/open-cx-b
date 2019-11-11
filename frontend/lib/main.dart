@@ -182,9 +182,21 @@ class MainScreen extends StatelessWidget {
                           'Chico da Tina ',
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(fontWeight: FontWeight.bold)
                         ),
-                      )
+                      ),
+                      RaisedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Profile()),
+                          );
+                        },
+                        child: Text(
+                      'Profile',
+                        style: TextStyle(fontSize: 20)
+                        ),
+                      ),
                     ]
                   ),
                   decoration: BoxDecoration(
@@ -345,3 +357,18 @@ Widget cardOptions() => PopupMenuButton(
     color: Colors.red,
   ),
 );
+
+
+class Profile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(backgroundColor: Colors.white,
+      resizeToAvoidBottomPadding: true,
+      appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 180, 0, 0),
+          title: Image.asset('images/white_logo.png'),
+          centerTitle: true
+      ),
+    );
+  }
+}
