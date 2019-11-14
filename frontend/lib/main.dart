@@ -494,10 +494,20 @@ class Profile extends StatelessWidget {
                         left: 0.1 * MediaQuery.of(context).size.width,
                         right: 0.1 * MediaQuery.of(context).size.width),
                   child: TextField(
+                    controller: TextEditingController()..text = 'Chicod@tina.com',
                     onChanged: (text) {
                       print("Ok: $text");
                     },
                   )
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                    top: 0.01 * MediaQuery.of(context).size.width,
+                    right: 0.6 * MediaQuery.of(context).size.width,),
+                  child: Text(
+                    'Reset Password',
+                    style: TextStyle(color: Colors.red, fontSize: 12,fontWeight: FontWeight.bold),
+                  ),
                 ),
                 Container(
                   padding: EdgeInsets.only(
@@ -513,6 +523,7 @@ class Profile extends StatelessWidget {
                         left: 0.1 * MediaQuery.of(context).size.width,
                         right: 0.1 * MediaQuery.of(context).size.width),
                     child: TextField(
+                      controller: TextEditingController()..text = 'chicotina.com',
                       onChanged: (text) {
                         print("Ok: $text");
                       },
@@ -532,11 +543,30 @@ class Profile extends StatelessWidget {
                         left: 0.1 * MediaQuery.of(context).size.width,
                         right: 0.1 * MediaQuery.of(context).size.width),
                     child: TextField(
+                      controller: TextEditingController()..text = 'linkedin.com/tina',
                       onChanged: (text) {
                         print("Ok: $text");
                       },
                     )
-                )
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                      top: 0.04 * MediaQuery.of(context).size.width,
+                      right: 0.52 * MediaQuery.of(context).size.width),
+                  child: RaisedButton(
+                      color: Color.fromARGB(255, 180, 0, 0),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Profile()),
+                        );
+                      },
+                       child: Text(
+                          'Add Field',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
+                ),
               ],
             )
            ),
