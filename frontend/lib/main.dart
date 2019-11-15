@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:typed_data';
 import 'businesscard.dart';
-//import 'package:flutter_screenutil/flutter_screenutil.dart'
+import 'package:flutter/cupertino.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
+
 
 void main(){
   runApp(new MaterialApp(
@@ -15,9 +18,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Uint8List bytes = Uint8List(0);
+  TextEditingController _inputController;
+  TextEditingController _outputController;
   @override
   void initState() {
     super.initState();
+
     new Future.delayed(
         const Duration(seconds: 1, milliseconds: 500),
             () =>
@@ -182,8 +189,11 @@ class MainScreen extends StatelessWidget {
                             style: TextStyle(fontWeight: FontWeight.bold)
                         ),
                       ),
-                      RaisedButton(
-                        onPressed: () {
+                      Container(
+
+                        child: RaisedButton(
+                          color: Color.fromARGB(255, 180, 20, 20),
+                          onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => Profile()),
@@ -193,6 +203,7 @@ class MainScreen extends StatelessWidget {
                             'Profile',
                             style: TextStyle(fontSize: 20)
                         ),
+                      ),
                       ),
                     ]
                 ),
@@ -222,7 +233,7 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: cardOptions(),
+      floatingActionButton: cardOptions(context),
     );
   }
   
@@ -231,13 +242,13 @@ class MainScreen extends StatelessWidget {
     List<BusinessCard> cards =  new List();
     double numberOfCards = 8;
     cards.add(BusinessCard(218, 44, 56, "chico Tina", "chico@mail.com", "chico_official", "photo.png"));
-    cards.add(BusinessCard(34, 111, 84, "1chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(34, 111, 84, "1chico Tina", "chico@mail.com", "chico_official", "obama.png"));
     cards.add(BusinessCard(135, 195, 143, "2chico Tina", "chico@mail.com", "chico_official", "photo.png"));
-    cards.add(BusinessCard(95, 180, 156, "3chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(95, 180, 156, "3chico Tina", "chico@mail.com", "chico_official", "obama.png"));
     cards.add(BusinessCard(5, 255, 60, "4chico Tina", "chico@mail.com", "chico_official","photo.png"));
-    cards.add(BusinessCard(34, 111, 84, "5chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(34, 111, 84, "5chico Tina", "chico@mail.com", "chico_official", "obama.png"));
     cards.add(BusinessCard(135, 195, 143, "6chico Tina", "chico@mail.com", "chico_official", "photo.png"));
-    cards.add(BusinessCard(95, 180, 156, "7chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(95, 180, 156, "7chico Tina", "chico@mail.com", "chico_official", "obama.png"));
     List<Widget> cardList = new List();
 
     for (int i = 0; i < numberOfCards; i++) {
@@ -316,54 +327,44 @@ class MainScreen extends StatelessWidget {
   }
 }
 
-Widget cardOptions() => PopupMenuButton(
+Widget cardOptions(BuildContext context1) => PopupMenuButton(
 
-  itemBuilder: (context) {
-    var list = List<PopupMenuEntry<Object>>();
-    list.add(
-      PopupMenuItem(
-        child: Text("Add Card through:"),
-        value: 1,
-      ),
-    );
-    list.add(
-      PopupMenuDivider(
-        height: 10,
-      ),
-    );
-    list.add(
-      CheckedPopupMenuItem(
-        child: Text(
-          "NFC",
-          style: TextStyle(color: Color.fromARGB(255, 180, 20, 20)),
-        ),
-        value: 2,
-        checked: true,
-      ),
-    );
-    list.add(
-      CheckedPopupMenuItem(
-        child: Text(
-          "QR Code",
-          style: TextStyle(color: Color.fromARGB(255, 180, 20, 20)),
-        ),
-        value: 2,
-        checked: true,
-      ),
-    );
-
-    list.add(
-      CheckedPopupMenuItem(
-        child: Text(
-          "Other",
-          style: TextStyle(color: Color.fromARGB(255, 180, 20, 20)),
-        ),
-        value: 2,
-        checked: true,
-      ),
-    );
-
-    return list;
+  itemBuilder: (context) => [
+    PopupMenuItem(
+      value: 1,
+      child: Text("Qr-code"),
+    ),
+    PopupMenuItem(
+      value: 2,
+      child: Text("NFC"),
+    ),
+    PopupMenuItem(
+      value: 3,
+      child: Text("Manual"),
+    ),
+    PopupMenuItem(
+      value: 4,
+      child: Text("Filler :("),
+    ),
+    PopupMenuItem(
+      value: 5,
+      child: Text("Other :)"),
+    ),
+  ],
+  initialValue: 2,
+  onCanceled: () {
+    print("You have canceled the menu.");
+  },
+  onSelected: (value) {
+    switch (value){
+      case 1:
+        Navigator.push(
+          context1,
+          MaterialPageRoute(builder: (context1) => QrReader()),
+        );
+      break;
+      default: print("not implemented yet :/");
+    }
   },
   padding: EdgeInsets.all(20),
   child: Container(
@@ -514,5 +515,13 @@ class Profile extends StatelessWidget {
           ],
       )
     );
+  }
+}
+
+
+class QrReader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    String cameraScanResult = scanner.scan().toString();
   }
 }
