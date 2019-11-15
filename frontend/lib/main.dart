@@ -289,7 +289,7 @@ class MainScreen extends StatelessWidget {
           childWhenDragging: Container(),
           feedback: Card(
             elevation: 12,
-            color: Color.fromARGB(255, cards[i].redValue, cards[i].greenValue, cards[i].blueValue),
+            color: Color.fromARGB(255, cards[i].red, cards[i].green, cards[i].blue),
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Container(
@@ -300,7 +300,7 @@ class MainScreen extends StatelessWidget {
           ),
           child: Card(
             elevation: 12,
-            color: Color.fromARGB(255, cards[i].redValue, cards[i].greenValue, cards[i].blueValue),
+            color: Color.fromARGB(255, cards[i].red, cards[i].green, cards[i].blue),
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Container(
