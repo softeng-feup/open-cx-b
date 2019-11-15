@@ -230,14 +230,14 @@ class MainScreen extends StatelessWidget {
   List<Widget> _getBusinessCard(BuildContext context){
     List<BusinessCard> cards =  new List();
     double numberOfCards = 8;
-    cards.add(BusinessCard(218, 44, 56, "chico Tina", "chico@mail.com", "chico_official"));
-    cards.add(BusinessCard(34, 111, 84, "1chico Tina", "chico@mail.com", "chico_official"));
-    cards.add(BusinessCard(135, 195, 143, "2chico Tina", "chico@mail.com", "chico_official"));
-    cards.add(BusinessCard(95, 180, 156, "3chico Tina", "chico@mail.com", "chico_official"));
-    cards.add(BusinessCard(5, 255, 60, "4chico Tina", "chico@mail.com", "chico_official"));
-    cards.add(BusinessCard(34, 111, 84, "5chico Tina", "chico@mail.com", "chico_official"));
-    cards.add(BusinessCard(135, 195, 143, "6chico Tina", "chico@mail.com", "chico_official"));
-    cards.add(BusinessCard(95, 180, 156, "7chico Tina", "chico@mail.com", "chico_official"));
+    cards.add(BusinessCard(218, 44, 56, "chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(34, 111, 84, "1chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(135, 195, 143, "2chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(95, 180, 156, "3chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(5, 255, 60, "4chico Tina", "chico@mail.com", "chico_official","photo.png"));
+    cards.add(BusinessCard(34, 111, 84, "5chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(135, 195, 143, "6chico Tina", "chico@mail.com", "chico_official", "photo.png"));
+    cards.add(BusinessCard(95, 180, 156, "7chico Tina", "chico@mail.com", "chico_official", "photo.png"));
     List<Widget> cardList = new List();
 
     for (int i = 0; i < numberOfCards; i++) {
@@ -252,7 +252,7 @@ class MainScreen extends StatelessWidget {
                   width: 0.15 * MediaQuery.of(context).size.height,
                   child: ClipRRect(
                     borderRadius: new BorderRadius.circular(100.0),
-                    child: Image.asset('images/photo.png'),
+                    child: Image.asset('images/' + cards[i].photo),
                   ),
                 ),
                 Container(
