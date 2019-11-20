@@ -11,17 +11,28 @@ class Participant {
   String gitHub;
   String twitter;
   String photo;
-  int cv;
+  String cv;
   List<int> lectures = List();
+  List<int> connections = List();
   List<String> cardAttributes = List();
-  int sponsor;
 
-  Participant({
-    this.id, this.name, this.bio, this.email, this.password,
-    this.company, this.position, this.website, this.linkedIn,
-    this.gitHub, this.twitter, this.photo, this.cv, this.lectures,
-    this.sponsor, this.cardAttributes
-  });
+  Participant(
+      {this.id,
+      this.name,
+      this.bio,
+      this.email,
+      this.password,
+      this.company,
+      this.position,
+      this.website,
+      this.linkedIn,
+      this.gitHub,
+      this.twitter,
+      this.photo,
+      this.cv,
+      this.lectures,
+      this.cardAttributes,
+      this.connections});
 }
 
 class Sponsor {
@@ -34,11 +45,17 @@ class Sponsor {
   String website;
   String promotionalVideo;
   List<String> cardAttributes = List();
-  Sponsor({
-    this.id, this.name, this.logo, this.businessAreas,
-    this.slogan, this.website, this.promotionalVideo,
-    this.representatives, this.cardAttributes
-  });
+
+  Sponsor(
+      {this.id,
+      this.name,
+      this.logo,
+      this.businessAreas,
+      this.slogan,
+      this.website,
+      this.promotionalVideo,
+      this.representatives,
+      this.cardAttributes});
 }
 
 class Lecture {
@@ -48,9 +65,12 @@ class Lecture {
   DateTime startTime;
   DateTime endTime;
   List<int> speakers = List();
-  Lecture ({
-    this.id, this.title, this.description,
-    this.startTime, this.endTime,
-    this.speakers
-  });
+
+  Lecture(
+      {this.id,
+      this.title,
+      this.description,
+      this.startTime,
+      this.endTime,
+      this.speakers});
 }
