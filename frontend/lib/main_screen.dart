@@ -95,10 +95,11 @@ class MainScreen extends StatelessWidget {
 
   List<Widget> _getBusinessCard(BuildContext context) {
     List<BusinessCard> cards = new List();
-    double numberOfCards = 8;
+    double numberOfCards = 0;
     cards.add(BusinessCard(218, 44, 56, "chico Tina", "chico@mail.com",
         "chico_official", "photo.png"));
-    cards.add(BusinessCard(34, 111, 84, "1chico Tina", "chico@mail.com",
+    numberOfCards++;
+    /*cards.add(BusinessCard(34, 111, 84, "1chico Tina", "chico@mail.com",
         "chico_official", "obama.png"));
     cards.add(BusinessCard(135, 195, 143, "2chico Tina", "chico@mail.com",
         "chico_official", "photo.png"));
@@ -111,7 +112,7 @@ class MainScreen extends StatelessWidget {
     cards.add(BusinessCard(135, 195, 143, "6chico Tina", "chico@mail.com",
         "chico_official", "photo.png"));
     cards.add(BusinessCard(95, 180, 156, "7chico Tina", "chico@mail.com",
-        "chico_official", "obama.png"));
+        "chico_official", "obama.png"));*/
     List<Widget> cardList = new List();
 
     for (int i = 0; i < numberOfCards; i++) {
@@ -146,7 +147,7 @@ class MainScreen extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
-                    Text(
+                     Text(
                       cards[i].linkedIn,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
@@ -185,11 +186,15 @@ class MainScreen extends StatelessWidget {
               child: info,
             ),
           ),
+
         ),
       );
     }
     return cardList;
   }
+
+
+
 }
 
 Widget cardOptions(BuildContext context1) => PopupMenuButton(

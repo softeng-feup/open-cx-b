@@ -20,7 +20,14 @@ class Database {
   Map<int, Sponsor> sponsors = Map();
   Map<int, Lecture> lectures = Map();
 
-  void _seed() {}
+  void _seed() {
+    addParticipant(
+      name: 'eduardo',
+      email: 'eduardo@gmail.com',
+      photo: 'images/eduardo.jpg',
+      password: 'souRei',
+    );
+  }
 
   void addParticipant(
       {String name,
