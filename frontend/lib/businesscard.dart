@@ -19,6 +19,6 @@ class BusinessCard {
     this.name = participant.name ?? 'John Doe';
     this.email = participant.email ?? 'john.doe@example.com';
     this.linkedIn = participant.linkedIn ?? 'john.doe';
-    this.photo = participant.photo ?? 'photo.png';
+    this.photo = participant.photo ?? 'eduardo.jpg';
   }
 }

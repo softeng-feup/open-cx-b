@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'model.dart';
+
 class Profile extends StatelessWidget {
+
+  final Participant participant;
+
+  Profile(this.participant);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +30,12 @@ class Profile extends StatelessWidget {
                       right: 0.3 * MediaQuery.of(context).size.width),
                   child: ClipRRect(
                     borderRadius: new BorderRadius.circular(1000.0),
-                    child: Image.asset('images/photo.png'),
+                    child: Image.asset(participant.photo),
                   ),
                 ),
                 Container(
                   child: Text(
-                    'Chico da Tina',
+                    participant.name,
                     style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -38,7 +45,7 @@ class Profile extends StatelessWidget {
                     right: 0.7 * MediaQuery.of(context).size.width,
                   ),
                   child: Text(
-                    'Email',
+                    participant.email,
                     style: TextStyle(
                         color: Colors.grey,
                         fontSize: 18,
@@ -51,7 +58,7 @@ class Profile extends StatelessWidget {
                         right: 0.1 * MediaQuery.of(context).size.width),
                     child: TextField(
                       controller: TextEditingController()
-                        ..text = 'Chicod@tina.com',
+                        ..text = participant.email,
                       onChanged: (text) {
                         print("Ok: $text");
                       },
@@ -88,7 +95,7 @@ class Profile extends StatelessWidget {
                         right: 0.1 * MediaQuery.of(context).size.width),
                     child: TextField(
                       controller: TextEditingController()
-                        ..text = 'chicotina.com',
+                        ..text = participant.website,
                       onChanged: (text) {
                         print("Ok: $text");
                       },
@@ -112,7 +119,7 @@ class Profile extends StatelessWidget {
                         right: 0.1 * MediaQuery.of(context).size.width),
                     child: TextField(
                       controller: TextEditingController()
-                        ..text = 'linkedin.com/tina',
+                        ..text = participant.linkedIn,
                       onChanged: (text) {
                         print("Ok: $text");
                       },
@@ -126,7 +133,7 @@ class Profile extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Profile()),
+                        MaterialPageRoute(builder: (context) => Profile(participant)),
                       );
                     },
                     child: Text(
@@ -140,4 +147,5 @@ class Profile extends StatelessWidget {
           ],
         ));
   }
+
 }

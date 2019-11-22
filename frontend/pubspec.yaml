@@ -50,6 +50,7 @@ flutter:
     - images/photo.png
     - images/white_logo.png
     - images/obama.png
+    - images/eduardo.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

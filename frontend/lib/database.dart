@@ -25,8 +25,31 @@ class Database {
       name: 'eduardo',
       email: 'eduardo@gmail.com',
       photo: 'images/eduardo.jpg',
+      website: 'siteTop.com',
+      linkedIn: 'eduMacedo99',
       password: 'souRei',
+      company: 'Influencers C.A.',
     );
+  }
+
+  void addDefault(){
+    var _default = Participant(
+      name: 'Chico da Tina',
+      email: 'Chicod@Tina.com',
+      website: 'tina.com',
+      linkedIn: 'tina',
+      company: 'Nas Drogas xisdê',
+    );
+    participants[999] = _default;
+  }
+
+  int findParticipantByEmail(String email) {
+    int result = -1;
+    participants.forEach((key, val) {
+      if (participants[key].email == email)
+        result = key;
+    });
+    return result;
   }
 
   void addParticipant(
