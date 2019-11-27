@@ -22,13 +22,19 @@ class Database {
 
   void _seed() {
     addParticipant(
-      name: 'eduardo',
+      name: 'Eduardo',
       email: 'eduardo@gmail.com',
       photo: 'images/eduardo.jpg',
       website: 'siteTop.com',
       linkedIn: 'eduMacedo99',
       password: 'souRei',
       company: 'Influencers C.A.',
+    );
+    addParticipant(
+      name: 'Chico da Tina',
+      email: 'chico@tina.com',
+      photo: 'images/photo.png',
+      password: 'freicken'
     );
   }
 

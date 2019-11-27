@@ -1,15 +1,9 @@
-import 'package:cardy_b/model.dart';
 import 'package:flutter/material.dart';
 import 'businesscard.dart';
 import 'profile_screen.dart';
 import 'qr_reader.dart';
 
 class MainScreen extends StatelessWidget {
-
-  final Participant participant;
-
-  MainScreen(this.participant);
-
   @override
   Widget build(BuildContext context) {
     List<Widget> businessCards = _getBusinessCard(context);
@@ -46,11 +40,11 @@ class MainScreen extends StatelessWidget {
                         width: 0.15 * MediaQuery.of(context).size.height,
                         child: ClipRRect(
                           borderRadius: new BorderRadius.circular(100.0),
-                          child: Image.asset(participant.photo),
+                          child: Image.asset('images/photo.png'),
                         ),
                       ),
                       Container(
-                        child: Text(participant.name,
+                        child: Text('Chico da Tina ',
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(fontWeight: FontWeight.bold)),
@@ -62,7 +56,7 @@ class MainScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Profile(participant)),
+                                  builder: (context) => ProfileScreen()),
                             );
                           },
                           child:
@@ -102,8 +96,8 @@ class MainScreen extends StatelessWidget {
   List<Widget> _getBusinessCard(BuildContext context) {
     List<BusinessCard> cards = new List();
     double numberOfCards = 0;
-    cards.add(BusinessCard(218, 44, 56, participant.name, participant.email,
-        participant.company, participant.photo ));
+    cards.add(BusinessCard(218, 44, 56, "chico Tina", "chico@mail.com",
+        "chico_official", "photo.png"));
     numberOfCards++;
     /*cards.add(BusinessCard(34, 111, 84, "1chico Tina", "chico@mail.com",
         "chico_official", "obama.png"));
@@ -163,36 +157,17 @@ class MainScreen extends StatelessWidget {
                 ))
               ]));
       cardList.add(
-        Draggable(
-          onDragEnd: (drag) {
-            //what to do when not dragging anymore.
-          },
-          childWhenDragging: Container(),
-          feedback: Card(
-            elevation: 12,
-            color: Color.fromARGB(
-                255, cards[i].red, cards[i].green, cards[i].blue),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 0.55 * MediaQuery.of(context).size.height,
-              height: 0.3 * MediaQuery.of(context).size.height,
-              child: info,
-            ),
+        Card(
+          elevation: 12,
+          color: Color.fromARGB(
+              255, cards[i].red, cards[i].green, cards[i].blue),
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          child: Container(
+            width: 0.55 * MediaQuery.of(context).size.height,
+            height: 0.3 * MediaQuery.of(context).size.height,
+            child: info,
           ),
-          child: Card(
-            elevation: 12,
-            color: Color.fromARGB(
-                255, cards[i].red, cards[i].green, cards[i].blue),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 0.55 * MediaQuery.of(context).size.height,
-              height: 0.3 * MediaQuery.of(context).size.height,
-              child: info,
-            ),
-          ),
-
         ),
       );
     }
