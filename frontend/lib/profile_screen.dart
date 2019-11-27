@@ -176,6 +176,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> fieldList = _getProfileFields(context);
     return Scaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomPadding: true,
@@ -205,91 +206,9 @@ class ProfileScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 0.03 * MediaQuery.of(context).size.width,
-                    right: 0.7 * MediaQuery.of(context).size.width,
-                  ),
-                  child: Text(
-                    'Email',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
+                Column(
+                  children: fieldList,
                 ),
-                Container(
-                    padding: EdgeInsets.only(
-                        left: 0.1 * MediaQuery.of(context).size.width,
-                        right: 0.1 * MediaQuery.of(context).size.width),
-                    child: TextField(
-                      controller: TextEditingController()
-                        ..text = 'Chicod@tina.com',
-                      onChanged: (text) {
-                        print("Ok: $text");
-                      },
-                    )),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 0.01 * MediaQuery.of(context).size.width,
-                    right: 0.6 * MediaQuery.of(context).size.width,
-                  ),
-                  child: Text(
-                    'Reset Password',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 0.03 * MediaQuery.of(context).size.width,
-                    right: 0.65 * MediaQuery.of(context).size.width,
-                  ),
-                  child: Text(
-                    'Website',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                    padding: EdgeInsets.only(
-                        left: 0.1 * MediaQuery.of(context).size.width,
-                        right: 0.1 * MediaQuery.of(context).size.width),
-                    child: TextField(
-                      controller: TextEditingController()
-                        ..text = 'chicotina.com',
-                      onChanged: (text) {
-                        print("Ok: $text");
-                      },
-                    )),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 0.03 * MediaQuery.of(context).size.width,
-                    right: 0.65 * MediaQuery.of(context).size.width,
-                  ),
-                  child: Text(
-                    'LinkedIn',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                    padding: EdgeInsets.only(
-                        left: 0.1 * MediaQuery.of(context).size.width,
-                        right: 0.1 * MediaQuery.of(context).size.width),
-                    child: TextField(
-                      controller: TextEditingController()
-                        ..text = 'linkedin.com/tina',
-                      onChanged: (text) {
-                        print("Ok: $text");
-                      },
-                    )),
                 Container(
                   padding: EdgeInsets.only(
                       top: 0.04 * MediaQuery.of(context).size.width,
@@ -314,3 +233,43 @@ class ProfileScreen extends StatelessWidget {
         ));
   }
 }
+
+List<Widget> _getProfileFields(BuildContext context){
+  var fieldInfo = [['Email','Email'],['GitHub','GitHub'],['LinkedIn','LinkedIn'],['Email','Email'],['GitHub','GitHub'],['LinkedIn','LinkedIn']];
+
+  List<Widget> fieldList = new List();
+
+  for(var i=0; i<fieldInfo.length; i++){
+    fieldList.add(
+      Container(
+        padding: EdgeInsets.only(
+          top: 0.03 * MediaQuery.of(context).size.width,
+          right: 0.65 * MediaQuery.of(context).size.width,
+        ),
+        child: Text(
+          fieldInfo[i][0],
+          style: TextStyle(
+              color: Colors.grey,
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+    fieldList.add(
+      Container(
+        padding: EdgeInsets.only(
+            left: 0.1 * MediaQuery.of(context).size.width,
+            right: 0.1 * MediaQuery.of(context).size.width),
+        child: TextField(
+          controller: TextEditingController()
+            ..text = fieldInfo[i][1],
+          onChanged: (text) {
+            print("Ok: $text");
+          },
+        )
+      ),
+    );
+  }
+  return fieldList;
+}
+

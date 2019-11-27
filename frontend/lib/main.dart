@@ -228,6 +228,7 @@ class _LoginPageState extends State<LoginScreen> {
   void _loginPressed () {
     print('The user wants to login with $_email and $_password');
   }
+
   void _createAccountPressed () {
     print('The user wants to create an accoutn with $_email and $_password');
 
