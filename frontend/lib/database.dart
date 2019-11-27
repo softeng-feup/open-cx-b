@@ -22,10 +22,16 @@ class Database {
 
   void _seed() {
     addParticipant(
-      name: 'eduardo',
+      name: 'Eduardo',
       email: 'eduardo@gmail.com',
       photo: 'images/eduardo.jpg',
       password: 'souRei',
+    );
+    addParticipant(
+      name: 'Chico da Tina',
+      email: 'chico@tina.com',
+      photo: 'images/photo.png',
+      password: 'freicken'
     );
   }
 

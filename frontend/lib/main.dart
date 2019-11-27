@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:typed_data';
 import 'main_screen.dart';
+import 'app_state.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -226,9 +227,7 @@ class _LoginPageState extends State<LoginScreen> {
 
   void _loginPressed () {
     print('The user wants to login with $_email and $_password');
-
   }
-
   void _createAccountPressed () {
     print('The user wants to create an accoutn with $_email and $_password');
 
@@ -240,6 +239,7 @@ class _LoginPageState extends State<LoginScreen> {
 
   void _skipLogin () {
     print('The user skipped Login');
+    AppState().userid = 1;
     Navigator.push(
       context,
       MaterialPageRoute(
