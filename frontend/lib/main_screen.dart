@@ -157,36 +157,17 @@ class MainScreen extends StatelessWidget {
                 ))
               ]));
       cardList.add(
-        Draggable(
-          onDragEnd: (drag) {
-            //what to do when not dragging anymore.
-          },
-          childWhenDragging: Container(),
-          feedback: Card(
-            elevation: 12,
-            color: Color.fromARGB(
-                255, cards[i].red, cards[i].green, cards[i].blue),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 0.55 * MediaQuery.of(context).size.height,
-              height: 0.3 * MediaQuery.of(context).size.height,
-              child: info,
-            ),
+        Card(
+          elevation: 12,
+          color: Color.fromARGB(
+              255, cards[i].red, cards[i].green, cards[i].blue),
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          child: Container(
+            width: 0.55 * MediaQuery.of(context).size.height,
+            height: 0.3 * MediaQuery.of(context).size.height,
+            child: info,
           ),
-          child: Card(
-            elevation: 12,
-            color: Color.fromARGB(
-                255, cards[i].red, cards[i].green, cards[i].blue),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 0.55 * MediaQuery.of(context).size.height,
-              height: 0.3 * MediaQuery.of(context).size.height,
-              child: info,
-            ),
-          ),
-
         ),
       );
     }
