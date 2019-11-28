@@ -1,5 +1,5 @@
 name: cardy_b
-description: Easy networking through virtual business cards 
+description: Easy networking through virtual business cards
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -14,7 +14,7 @@ description: Easy networking through virtual business cards
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.3.0 <3.0.0"
 
 dependencies:
   flutter:
