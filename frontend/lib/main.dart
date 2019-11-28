@@ -240,7 +240,7 @@ class _LoginPageState extends State<LoginScreen> {
 
   void _skipLogin () {
     print('The user skipped Login');
-    AppState().userid = 1;
+    AppState().userid = 0;
     Navigator.push(
       context,
       MaterialPageRoute(

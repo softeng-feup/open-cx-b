@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'businesscard.dart';
-import 'profile_screen.dart';
+import 'profile_display_screen.dart';
 import 'qr_reader.dart';
 
 class MainScreen extends StatelessWidget {
@@ -56,7 +56,7 @@ class MainScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ProfileScreen()),
+                                  builder: (context) => ProfileDisplayScreen()),
                             );
                           },
                           child:

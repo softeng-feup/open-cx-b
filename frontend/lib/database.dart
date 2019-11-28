@@ -34,6 +34,7 @@ class Database {
       name: 'Chico da Tina',
       email: 'chico@tina.com',
       photo: 'images/photo.png',
+      gitHub: 'chico_tina',
       password: 'freicken'
     );
   }
