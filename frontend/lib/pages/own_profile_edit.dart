@@ -1,9 +1,9 @@
 import 'package:cardy_b/colors.dart';
-import 'package:cardy_b/model.dart';
+import 'package:cardy_b/logic/app_state.dart';
+import 'package:cardy_b/logic/database.dart';
+import 'package:cardy_b/logic/model.dart';
+import 'package:cardy_b/widget/app_bar.dart';
 import 'package:flutter/material.dart';
-import 'database.dart';
-import 'app_state.dart';
-import 'app_bar.dart';
 
 class ProfileEditScreen extends StatefulWidget {
   @override
@@ -42,7 +42,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
-      appBar: CardyBAppBar(),
+      appBar: CardyBAppBar(pageTitle: 'Edit Profile'),
       body: Stack(
         children: <Widget>[
           SingleChildScrollView(

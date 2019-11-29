@@ -1,5 +1,6 @@
-import 'model.dart';
 import 'dart:core';
+
+import 'package:cardy_b/logic/model.dart';
 
 class Database {
   static final Database _instance = Database._internal();

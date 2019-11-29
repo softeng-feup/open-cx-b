@@ -1,4 +1,4 @@
-import 'model.dart';
+import 'package:cardy_b/logic/model.dart';
 
 
 class BusinessCard {

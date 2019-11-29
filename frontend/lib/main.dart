@@ -1,9 +1,10 @@
-import 'package:cardy_b/colors.dart';
-import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:typed_data';
-import 'main_screen.dart';
-import 'app_state.dart';
+
+import 'package:cardy_b/colors.dart';
+import 'package:cardy_b/logic/app_state.dart';
+import 'package:cardy_b/pages/main_screen.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(new MaterialApp(

@@ -1,12 +1,12 @@
-import 'package:cardy_b/app_bar.dart';
-import 'package:cardy_b/app_state.dart';
+import 'package:cardy_b/businesscard.dart';
 import 'package:cardy_b/colors.dart';
-import 'package:cardy_b/database.dart';
+import 'package:cardy_b/logic/app_state.dart';
+import 'package:cardy_b/logic/database.dart';
+import 'package:cardy_b/pages/own_profile_display.dart';
+import 'package:cardy_b/qr_reader.dart';
+import 'package:cardy_b/widget/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'businesscard.dart';
-import 'profile_display_screen.dart';
-import 'qr_reader.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -196,7 +196,7 @@ class ProfileCard extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          ProfileDisplayScreen()),
+                                          OwnProfileDisplayPage()),
                                 );
                               },
                               child: Text('View Profile',

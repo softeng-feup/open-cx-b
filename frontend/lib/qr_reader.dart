@@ -1,9 +1,9 @@
-import 'package:cardy_b/app_bar.dart';
-import 'package:qrscan/qrscan.dart' as scanner;
-import 'package:flutter/material.dart';
-
 import 'dart:async';
 import 'dart:typed_data';
+
+import 'package:cardy_b/widget/app_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
 
 
 class QrReader extends StatelessWidget{
