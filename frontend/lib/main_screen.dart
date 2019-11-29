@@ -1,9 +1,16 @@
+import 'package:cardy_b/model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'businesscard.dart';
 import 'profile_screen.dart';
 import 'qr_reader.dart';
 
 class MainScreen extends StatelessWidget {
+
+  final Participant participant;
+
+  MainScreen(this.participant);
+
   @override
   Widget build(BuildContext context) {
     List<Widget> businessCards = _getBusinessCard(context);
@@ -40,11 +47,11 @@ class MainScreen extends StatelessWidget {
                         width: 0.15 * MediaQuery.of(context).size.height,
                         child: ClipRRect(
                           borderRadius: new BorderRadius.circular(100.0),
-                          child: Image.asset('images/photo.png'),
+                          child: Image.asset(participant.photo),
                         ),
                       ),
                       Container(
-                        child: Text('Chico da Tina ',
+                        child: Text(participant.name,
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(fontWeight: FontWeight.bold)),
@@ -56,7 +63,7 @@ class MainScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Profile()),
+                                  builder: (context) => Profile(participant)),
                             );
                           },
                           child:
@@ -89,30 +96,62 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: cardOptions(context),
+      floatingActionButton: SpeedDial (
+        animatedIcon: AnimatedIcons.menu_close,
+        backgroundColor: Colors.redAccent,
+        children: [
+          SpeedDialChild(
+            child: Icon(Icons.library_add),
+              backgroundColor: Colors.red,
+              label: "Get a card",
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QrReader()))
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.send),
+              backgroundColor: Colors.red,
+              label: "Send a card by QR Code",
+              onTap: () => shareCard(context)
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.send),
+              backgroundColor: Colors.red,
+              label: "Send a card by NFC",
+              onTap: () => shareCard(context)
+          )
+        ]
+      ),
     );
   }
+
+
+  /*A testar o porquê de isto não funcionar assim*/
+  /*void test(BuildContext context) {
+    SpeedDial (
+        backgroundColor: Colors.blue,
+        children: [
+          SpeedDialChild (
+            child: Icon(Icons.code),
+            backgroundColor: Colors.red,
+            label: "QR Code",
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => QrReader()),
+          )
+        )
+      ],
+    );
+  }*/
+
 
   List<Widget> _getBusinessCard(BuildContext context) {
     List<BusinessCard> cards = new List();
     double numberOfCards = 0;
-    cards.add(BusinessCard(218, 44, 56, "chico Tina", "chico@mail.com",
-        "chico_official", "photo.png"));
+    cards.add(BusinessCard(218, 44, 56, participant.name, participant.email,
+        participant.company, participant.photo ));
     numberOfCards++;
-    /*cards.add(BusinessCard(34, 111, 84, "1chico Tina", "chico@mail.com",
-        "chico_official", "obama.png"));
-    cards.add(BusinessCard(135, 195, 143, "2chico Tina", "chico@mail.com",
-        "chico_official", "photo.png"));
-    cards.add(BusinessCard(95, 180, 156, "3chico Tina", "chico@mail.com",
-        "chico_official", "obama.png"));
-    cards.add(BusinessCard(5, 255, 60, "4chico Tina", "chico@mail.com",
-        "chico_official", "photo.png"));
-    cards.add(BusinessCard(34, 111, 84, "5chico Tina", "chico@mail.com",
-        "chico_official", "obama.png"));
-    cards.add(BusinessCard(135, 195, 143, "6chico Tina", "chico@mail.com",
-        "chico_official", "photo.png"));
-    cards.add(BusinessCard(95, 180, 156, "7chico Tina", "chico@mail.com",
-        "chico_official", "obama.png"));*/
+
     List<Widget> cardList = new List();
 
     for (int i = 0; i < numberOfCards; i++) {
@@ -173,9 +212,6 @@ class MainScreen extends StatelessWidget {
     }
     return cardList;
   }
-
-
-
 }
 
 Widget cardOptions(BuildContext context1) => PopupMenuButton(
@@ -237,3 +273,65 @@ Widget cardOptions(BuildContext context1) => PopupMenuButton(
         ),
       ),
     );
+
+Widget shareCard(BuildContext context1) => PopupMenuButton(
+  itemBuilder: (context) => [
+    PopupMenuItem(
+      value: 1,
+      child: Text("Qr-code"),
+    ),
+    PopupMenuItem(
+      value: 2,
+      child: Text("NFC"),
+    ),
+    PopupMenuItem(
+      value: 3,
+      child: Text("Manual"),
+    ),
+    PopupMenuItem(
+      value: 4,
+      child: Text("Filler :("),
+    ),
+    PopupMenuItem(
+      value: 5,
+      child: Text("Other :)"),
+    ),
+  ],
+  initialValue: 2,
+  onCanceled: () {
+    print("You have canceled the menu.");
+  },
+  onSelected: (value) {
+    switch (value) {
+      case 1:
+        Navigator.push(
+          context1,
+          MaterialPageRoute(builder: (context1) => QrReader()),
+        );
+        break;
+      default:
+        print("not implemented yet :/");
+    }
+  },
+  padding: EdgeInsets.all(20),
+  child: Container(
+    width: 60.0,
+    height: 60.0,
+    decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Color.fromARGB(255, 180, 20, 20),
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black54,
+              offset: Offset(0.0, 15.0),
+              blurRadius: 15.0)
+        ]),
+    child: Icon(
+      Icons.library_add,
+      size: 40,
+      color: Colors.white,
+    ),
+  ),
+);
+
+
