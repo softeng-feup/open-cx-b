@@ -4,5 +4,5 @@ class AppState {
 
   int userid = 0;
 
-  AppState._internal() {}
+  AppState._internal();
 }

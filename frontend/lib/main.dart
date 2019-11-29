@@ -17,8 +17,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Uint8List bytes = Uint8List(0);
-  TextEditingController _inputController;
-  TextEditingController _outputController;
 
   @override
   void initState() {

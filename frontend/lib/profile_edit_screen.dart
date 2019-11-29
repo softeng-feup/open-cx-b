@@ -2,6 +2,7 @@ import 'package:cardy_b/model.dart';
 import 'package:flutter/material.dart';
 import 'database.dart';
 import 'app_state.dart';
+import 'app_bar.dart';
 
 class ProfileEditScreen extends StatefulWidget {
   @override
@@ -12,10 +13,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   @override
   Widget build(BuildContext context) {
     Participant p = Database().participants[AppState().userid];
-    print(p.email);
     var photo = p.photo;
-    var email = p.email;
-    var name = p.name;
+    //var email = p.email;
+    //var name = p.name;
     var otherFields = Map<String, String>();
     if (p.bio != null) otherFields['Bio'] = p.bio;
     if (p.company != null) otherFields['Company'] = p.company;
@@ -41,10 +41,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
-      appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 180, 0, 0),
-          title: Image.asset('images/white_logo.png'),
-          centerTitle: true),
+      appBar: CardyBAppBar(),
       body: Stack(
         children: <Widget>[
           SingleChildScrollView(
@@ -94,6 +91,70 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
         backgroundColor: Color.fromARGB(255, 180, 20, 20),
       ),
     );
+  }
+}
+
+class ProfileEditorController {
+  Participant _p;
+  ProfileEditorController() {
+    var userid = AppState().userid;
+    _p = Database().getParticipantById(userid);
+  }
+  void updateUserEmail(String email) {
+    _p.email = email;
+  }
+  void updateUserName(String name) {
+    _p.name = name;
+  }
+  void updateOptionalField(String key, String value) {
+    switch (key) {
+      case 'Bio':
+        _p.bio = value;
+        break;
+      case 'Company':
+        _p.company = value;
+        break;
+      case 'Position':
+        _p.position = value;
+        break;
+      case 'Website':
+        _p.website = value;
+        break;
+      case 'LinkedIn':
+        _p.linkedIn = value;
+        break;
+      case 'GitHub':
+        _p.gitHub = value;
+        break;
+      case 'Twitter':
+        _p.twitter = value;
+        break;
+    }
+  }
+  void removeOptionalField(String key) {
+    switch (key) {
+      case 'Bio':
+        _p.bio = null;
+        break;
+      case 'Company':
+        _p.company = null;
+        break;
+      case 'Position':
+        _p.position = null;
+        break;
+      case 'Website':
+        _p.website = null;
+        break;
+      case 'LinkedIn':
+        _p.linkedIn = null;
+        break;
+      case 'GitHub':
+        _p.gitHub = null;
+        break;
+      case 'Twitter':
+        _p.twitter = null;
+        break;
+    }
   }
 }
 

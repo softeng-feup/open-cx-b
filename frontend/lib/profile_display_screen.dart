@@ -1,3 +1,4 @@
+import 'package:cardy_b/app_bar.dart';
 import 'package:cardy_b/model.dart';
 import 'package:flutter/material.dart';
 import 'package:cardy_b/profile_edit_screen.dart';
@@ -23,10 +24,7 @@ class ProfileDisplayScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
-      appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 180, 0, 0),
-          title: Image.asset('images/white_logo.png'),
-          centerTitle: true),
+      appBar: CardyBAppBar(),
       body: Stack(
         children: <Widget>[
           SingleChildScrollView(
