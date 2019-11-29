@@ -29,7 +29,8 @@ class Database {
       password: 'souRei',
       company: 'Influencers C.A.',
       bio: 'Eduardo is the King he is very handsome he programs a lot, xD.',
-      twitter: 'edudududu'
+      twitter: 'edudududu',
+      connections: [1, 3]
     );
     addParticipant(
       name: 'Chico da Tina',
@@ -37,6 +38,23 @@ class Database {
       photo: 'images/photo.png',
       gitHub: 'chico_tina',
       password: 'freicken'
+    );
+    addParticipant(
+      name: 'João Matos',
+      email: 'jopoaopaomapatos@gpemaipail.cocom',
+      photo: 'images/photo.png',
+      gitHub: 'joaonmatos',
+      password: 'jadiziaaminhaavo:zas!',
+      linkedIn: 'joaomatosofficial2019',
+      twitter: 'joaozinhodascouves'
+    );
+    addParticipant(
+      name: 'Mimi',
+      email: 'miguel@miguel.com.br',
+      photo: 'images/feup.jpg',
+      gitHub: 'miguel',
+      password: 'miguel',
+      linkedIn: 'miguel'
     );
   }
 

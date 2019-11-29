@@ -79,15 +79,13 @@ class MainScreen extends StatelessWidget {
   }*/
 
   List<Widget> _getBusinessCard(BuildContext context) {
-    List<BusinessCard> cards = new List();
-    double numberOfCards = 0;
-    cards.add(BusinessCard(218, 44, 56, "chico Tina", "chico@mail.com",
-        "chico_official", "photo.png"));
-    numberOfCards++;
+    var user = Database().getParticipantById(AppState().userid);
+    var cards = user.connections.map( (connection) => BusinessCard.fromParticipant(Database().getParticipantById(connection)));
+
 
     List<Widget> cardList = new List();
 
-    for (int i = 0; i < numberOfCards; i++) {
+    for (var card in cards) {
       Widget info = new Container(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -101,29 +99,29 @@ class MainScreen extends StatelessWidget {
                   width: 0.15 * MediaQuery.of(context).size.height,
                   child: ClipRRect(
                     borderRadius: new BorderRadius.circular(100.0),
-                    child: Image.asset('images/' + cards[i].photo),
+                    child: Image.asset(card.photo),
                   ),
                 ),
-                Container(
+                Expanded(
                     child: Column(
                   children: <Widget>[
                     Text(
-                      cards[i].name,
+                      card.name,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     Text(
-                      cards[i].email,
+                      card.email,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white),
                     ),
                     Text(
-                      cards[i].linkedIn,
+                      card.linkedIn,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontWeight: FontWeight.normal),
+                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white),
                     ),
                   ],
                 ))
@@ -132,7 +130,7 @@ class MainScreen extends StatelessWidget {
         Card(
           elevation: 12,
           color:
-              Color.fromARGB(255, cards[i].red, cards[i].green, cards[i].blue),
+              Color.fromARGB(255, card.red, card.green, card.blue),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Container(
@@ -230,66 +228,6 @@ class ProfileCard extends StatelessWidget {
         ));
   }
 }
-
-Widget cardOptions(BuildContext context1) => PopupMenuButton(
-      itemBuilder: (context) => [
-        PopupMenuItem(
-          value: 1,
-          child: Text("Qr-code"),
-        ),
-        PopupMenuItem(
-          value: 2,
-          child: Text("NFC"),
-        ),
-        PopupMenuItem(
-          value: 3,
-          child: Text("Manual"),
-        ),
-        PopupMenuItem(
-          value: 4,
-          child: Text("Filler :("),
-        ),
-        PopupMenuItem(
-          value: 5,
-          child: Text("Other :)"),
-        ),
-      ],
-      initialValue: 2,
-      onCanceled: () {
-        print("You have canceled the menu.");
-      },
-      onSelected: (value) {
-        switch (value) {
-          case 1:
-            Navigator.push(
-              context1,
-              MaterialPageRoute(builder: (context1) => QrReader()),
-            );
-            break;
-          default:
-            print("not implemented yet :/");
-        }
-      },
-      padding: EdgeInsets.all(20),
-      child: Container(
-        width: 60.0,
-        height: 60.0,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: CardyBColors.Accent,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black54,
-                  offset: Offset(0.0, 15.0),
-                  blurRadius: 15.0)
-            ]),
-        child: Icon(
-          Icons.library_add,
-          size: 40,
-          color: Colors.white,
-        ),
-      ),
-    );
 
 Widget shareCard(BuildContext context1) => PopupMenuButton(
       itemBuilder: (context) => [
