@@ -1,9 +1,8 @@
-import 'package:cardy_b/model.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:typed_data';
-import 'database.dart';
 import 'main_screen.dart';
+import 'app_state.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -18,8 +17,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Uint8List bytes = Uint8List(0);
-  TextEditingController _inputController;
-  TextEditingController _outputController;
 
   @override
   void initState() {
@@ -227,18 +224,7 @@ class _LoginPageState extends State<LoginScreen> {
   // These functions can self contain any user auth logic required, they all have access to _email and _password
 
   void _loginPressed () {
-    var db = Database();
-    int id = db.findParticipantByEmail(_email);
-    var participant = db.participants[id];
-    if(participant.password == _password){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => MainScreen(participant)),
-      );
-    }
-
-
+    print('The user wants to login with $_email and $_password');
   }
 
   void _createAccountPressed () {
@@ -252,17 +238,12 @@ class _LoginPageState extends State<LoginScreen> {
 
   void _skipLogin () {
     print('The user skipped Login');
-    var db = Database();
-    db.addDefault();
-    var participant = db.participants[999];
-
+    AppState().userid = 0;
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => MainScreen(participant)),
+          builder: (context) => MainScreen()),
     );
   }
-
-
 
 }

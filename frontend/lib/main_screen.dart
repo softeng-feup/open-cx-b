@@ -1,86 +1,23 @@
-import 'package:cardy_b/model.dart';
+import 'package:cardy_b/app_bar.dart';
+import 'package:cardy_b/app_state.dart';
+import 'package:cardy_b/database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'businesscard.dart';
-import 'profile_screen.dart';
+import 'profile_display_screen.dart';
 import 'qr_reader.dart';
 
 class MainScreen extends StatelessWidget {
-
-  final Participant participant;
-
-  MainScreen(this.participant);
-
   @override
   Widget build(BuildContext context) {
     List<Widget> businessCards = _getBusinessCard(context);
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
-      appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 180, 0, 0),
-          title: Image.asset('images/white_logo.png'),
-          centerTitle: true),
+      appBar: CardyBAppBar(),
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(
-              top: 0.01 * MediaQuery.of(context).size.height,
-            ),
-          ),
-          Container(
-              alignment: Alignment.center,
-              child: Container(
-                padding: EdgeInsets.all(
-                  0.025 * MediaQuery.of(context).size.height,
-                ),
-                height: 0.2 * MediaQuery.of(context).size.height,
-                width: 0.55 * MediaQuery.of(context).size.height,
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.all(
-                          0.02 * MediaQuery.of(context).size.height,
-                        ),
-                        height: 0.15 * MediaQuery.of(context).size.height,
-                        width: 0.15 * MediaQuery.of(context).size.height,
-                        child: ClipRRect(
-                          borderRadius: new BorderRadius.circular(100.0),
-                          child: Image.asset(participant.photo),
-                        ),
-                      ),
-                      Container(
-                        child: Text(participant.name,
-                            textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      ),
-                      Container(
-                        child: RaisedButton(
-                          color: Color.fromARGB(255, 180, 20, 20),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Profile(participant)),
-                            );
-                          },
-                          child:
-                              Text('Profile', style: TextStyle(fontSize: 20)),
-                        ),
-                      ),
-                    ]),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 180, 20, 20),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black54,
-                        offset: Offset(0.0, 10.0),
-                        blurRadius: 10.0),
-                  ],
-                ),
-              )),
+          ProfileCard(),
           Expanded(
             child: ListView.separated(
               padding: const EdgeInsets.all(8),
@@ -148,8 +85,8 @@ class MainScreen extends StatelessWidget {
   List<Widget> _getBusinessCard(BuildContext context) {
     List<BusinessCard> cards = new List();
     double numberOfCards = 0;
-    cards.add(BusinessCard(218, 44, 56, participant.name, participant.email,
-        participant.company, participant.photo ));
+    cards.add(BusinessCard(218, 44, 56, "chico Tina", "chico@mail.com",
+        "chico_official", "photo.png"));
     numberOfCards++;
 
     List<Widget> cardList = new List();
@@ -186,7 +123,7 @@ class MainScreen extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontWeight: FontWeight.normal),
                     ),
-                     Text(
+                    Text(
                       cards[i].linkedIn,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
@@ -198,10 +135,10 @@ class MainScreen extends StatelessWidget {
       cardList.add(
         Card(
           elevation: 12,
-          color: Color.fromARGB(
-              255, cards[i].red, cards[i].green, cards[i].blue),
+          color:
+              Color.fromARGB(255, cards[i].red, cards[i].green, cards[i].blue),
           shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Container(
             width: 0.55 * MediaQuery.of(context).size.height,
             height: 0.3 * MediaQuery.of(context).size.height,
@@ -211,6 +148,90 @@ class MainScreen extends StatelessWidget {
       );
     }
     return cardList;
+  }
+}
+
+class ProfileCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var p = Database().getParticipantById(AppState().userid);
+    return Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.all(0.02 * MediaQuery.of(context).size.width),
+        child: Container(
+          padding: EdgeInsets.all(
+            0.02 * MediaQuery.of(context).size.height,
+          ),
+          height: 0.2 * MediaQuery.of(context).size.height,
+          width: 0.55 * MediaQuery.of(context).size.height,
+          child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(
+                    0.0 * MediaQuery.of(context).size.height,
+                  ),
+                  height: 0.15 * MediaQuery.of(context).size.height,
+                  width: 0.15 * MediaQuery.of(context).size.height,
+                  child: ClipRRect(
+                    borderRadius: new BorderRadius.circular(100.0),
+                    child: Image.asset(p.photo),
+                  ),
+                ),
+                Expanded(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                      child: Text(p.name,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 28)),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 4),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            FlatButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProfileDisplayScreen()),
+                                );
+                              },
+                              child: Text('View Profile',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white)),
+                            ),
+                            FlatButton(
+                              onPressed: () { },
+                              child: Text('Display Card',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white)),
+                            )
+                          ]
+                      ),
+                    )
+                  ],
+                ))
+              ]),
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 180, 20, 20),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black54,
+                  offset: Offset(0.0, 5.0),
+                  blurRadius: 2.0),
+            ],
+          ),
+        ));
   }
 }
 

@@ -13,22 +13,30 @@ class Database {
   }
 
   int _nextParticipantId = 0;
-  int _nextSponsorId = 0;
-  int _nextLectureId = 0;
 
   Map<int, Participant> participants = Map();
-  Map<int, Sponsor> sponsors = Map();
-  Map<int, Lecture> lectures = Map();
+
+  Participant getParticipantById(id) => participants[id];
+  void updateParticipantById(int id, Participant p) { participants[id] = p; }
 
   void _seed() {
     addParticipant(
-      name: 'eduardo',
+      name: 'Eduardo',
       email: 'eduardo@gmail.com',
       photo: 'images/eduardo.jpg',
       website: 'siteTop.com',
       linkedIn: 'eduMacedo99',
       password: 'souRei',
       company: 'Influencers C.A.',
+      bio: 'Eduardo is the King he is very handsome he programs a lot, xD.',
+      twitter: 'edudududu'
+    );
+    addParticipant(
+      name: 'Chico da Tina',
+      email: 'chico@tina.com',
+      photo: 'images/photo.png',
+      gitHub: 'chico_tina',
+      password: 'freicken'
     );
   }
 
