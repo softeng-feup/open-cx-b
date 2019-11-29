@@ -1,11 +1,9 @@
+import 'package:cardy_b/app_bar.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:flutter/material.dart';
 
 import 'dart:async';
 import 'dart:typed_data';
-
-import 'package:flutter/material.dart';
-import 'package:qrscan/qrscan.dart' as scanner;
 
 
 class QrReader extends StatelessWidget{
@@ -14,12 +12,8 @@ class QrReader extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-            backgroundColor: Color.fromARGB(255, 180, 0, 0),
-            title: Image.asset('images/white_logo.png'),
-            centerTitle: true),
+    return Scaffold(
+        appBar: CardyBAppBar(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -37,7 +31,6 @@ class QrReader extends StatelessWidget{
             ],
           ),
         ),
-      ),
     );
   }
 

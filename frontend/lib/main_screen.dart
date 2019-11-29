@@ -1,5 +1,6 @@
 import 'package:cardy_b/app_bar.dart';
 import 'package:cardy_b/app_state.dart';
+import 'package:cardy_b/colors.dart';
 import 'package:cardy_b/database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -33,35 +34,31 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: SpeedDial (
-        animatedIcon: AnimatedIcons.menu_close,
-        backgroundColor: Colors.redAccent,
-        children: [
-          SpeedDialChild(
-            child: Icon(Icons.library_add),
-              backgroundColor: Colors.red,
-              label: "Get a card",
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QrReader()))
-          ),
-          SpeedDialChild(
-              child: Icon(Icons.send),
-              backgroundColor: Colors.red,
-              label: "Send a card by QR Code",
-              onTap: () => shareCard(context)
-          ),
-          SpeedDialChild(
-              child: Icon(Icons.send),
-              backgroundColor: Colors.red,
-              label: "Send a card by NFC",
-              onTap: () => shareCard(context)
-          )
-        ]
-      ),
+      floatingActionButton: SpeedDial(
+          animatedIcon: AnimatedIcons.menu_close,
+          backgroundColor: CardyBColors.Accent,
+          children: [
+            SpeedDialChild(
+                child: Icon(Icons.library_add),
+                backgroundColor: CardyBColors.LightAccent,
+                label: "Get a card",
+                onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => QrReader()),
+                    )),
+            SpeedDialChild(
+                child: Icon(Icons.send),
+                backgroundColor: CardyBColors.LightAccent,
+                label: "Send a card by QR Code",
+                onTap: () => shareCard(context)),
+            SpeedDialChild(
+                child: Icon(Icons.send),
+                backgroundColor: CardyBColors.LightAccent,
+                label: "Send a card by NFC",
+                onTap: () => shareCard(context))
+          ]),
     );
   }
-
 
   /*A testar o porquê de isto não funcionar assim*/
   /*void test(BuildContext context) {
@@ -80,7 +77,6 @@ class MainScreen extends StatelessWidget {
       ],
     );
   }*/
-
 
   List<Widget> _getBusinessCard(BuildContext context) {
     List<BusinessCard> cards = new List();
@@ -201,7 +197,8 @@ class ProfileCard extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ProfileDisplayScreen()),
+                                      builder: (context) =>
+                                          ProfileDisplayScreen()),
                                 );
                               },
                               child: Text('View Profile',
@@ -210,20 +207,19 @@ class ProfileCard extends StatelessWidget {
                                       color: Colors.white)),
                             ),
                             FlatButton(
-                              onPressed: () { },
+                              onPressed: () {},
                               child: Text('Display Card',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white)),
                             )
-                          ]
-                      ),
+                          ]),
                     )
                   ],
                 ))
               ]),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 180, 20, 20),
+            color: CardyBColors.Accent,
             boxShadow: [
               BoxShadow(
                   color: Colors.black54,
@@ -280,7 +276,7 @@ Widget cardOptions(BuildContext context1) => PopupMenuButton(
         height: 60.0,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Color.fromARGB(255, 180, 20, 20),
+            color: CardyBColors.Accent,
             boxShadow: [
               BoxShadow(
                   color: Colors.black54,
@@ -296,63 +292,61 @@ Widget cardOptions(BuildContext context1) => PopupMenuButton(
     );
 
 Widget shareCard(BuildContext context1) => PopupMenuButton(
-  itemBuilder: (context) => [
-    PopupMenuItem(
-      value: 1,
-      child: Text("Qr-code"),
-    ),
-    PopupMenuItem(
-      value: 2,
-      child: Text("NFC"),
-    ),
-    PopupMenuItem(
-      value: 3,
-      child: Text("Manual"),
-    ),
-    PopupMenuItem(
-      value: 4,
-      child: Text("Filler :("),
-    ),
-    PopupMenuItem(
-      value: 5,
-      child: Text("Other :)"),
-    ),
-  ],
-  initialValue: 2,
-  onCanceled: () {
-    print("You have canceled the menu.");
-  },
-  onSelected: (value) {
-    switch (value) {
-      case 1:
-        Navigator.push(
-          context1,
-          MaterialPageRoute(builder: (context1) => QrReader()),
-        );
-        break;
-      default:
-        print("not implemented yet :/");
-    }
-  },
-  padding: EdgeInsets.all(20),
-  child: Container(
-    width: 60.0,
-    height: 60.0,
-    decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Color.fromARGB(255, 180, 20, 20),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black54,
-              offset: Offset(0.0, 15.0),
-              blurRadius: 15.0)
-        ]),
-    child: Icon(
-      Icons.library_add,
-      size: 40,
-      color: Colors.white,
-    ),
-  ),
-);
-
-
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          value: 1,
+          child: Text("Qr-code"),
+        ),
+        PopupMenuItem(
+          value: 2,
+          child: Text("NFC"),
+        ),
+        PopupMenuItem(
+          value: 3,
+          child: Text("Manual"),
+        ),
+        PopupMenuItem(
+          value: 4,
+          child: Text("Filler :("),
+        ),
+        PopupMenuItem(
+          value: 5,
+          child: Text("Other :)"),
+        ),
+      ],
+      initialValue: 2,
+      onCanceled: () {
+        print("You have canceled the menu.");
+      },
+      onSelected: (value) {
+        switch (value) {
+          case 1:
+            Navigator.push(
+              context1,
+              MaterialPageRoute(builder: (context1) => QrReader()),
+            );
+            break;
+          default:
+            print("not implemented yet :/");
+        }
+      },
+      padding: EdgeInsets.all(20),
+      child: Container(
+        width: 60.0,
+        height: 60.0,
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: CardyBColors.Accent,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black54,
+                  offset: Offset(0.0, 15.0),
+                  blurRadius: 15.0)
+            ]),
+        child: Icon(
+          Icons.library_add,
+          size: 40,
+          color: Colors.white,
+        ),
+      ),
+    );

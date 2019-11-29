@@ -1,4 +1,5 @@
 import 'package:cardy_b/app_bar.dart';
+import 'package:cardy_b/colors.dart';
 import 'package:cardy_b/model.dart';
 import 'package:flutter/material.dart';
 import 'package:cardy_b/profile_edit_screen.dart';
@@ -93,7 +94,7 @@ class ProfileDisplayScreen extends StatelessWidget {
         },
         tooltip: 'Edit Profile',
         child: Icon(Icons.edit),
-        backgroundColor: Color.fromARGB(255, 180, 20, 20),
+        backgroundColor: CardyBColors.Accent,
       ),
     );
   }

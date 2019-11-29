@@ -1,3 +1,4 @@
+import 'package:cardy_b/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:typed_data';
@@ -175,7 +176,7 @@ class _LoginPageState extends State<LoginScreen> {
         child: new Column(
           children: <Widget>[
             ButtonTheme(
-                buttonColor: Color.fromARGB(255, 180, 20, 20),
+                buttonColor: CardyBColors.Accent,
                 child: new RaisedButton(
                   child: new Text('Login'),
                   onPressed: _loginPressed,

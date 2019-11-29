@@ -1,3 +1,4 @@
+import 'package:cardy_b/colors.dart';
 import 'package:cardy_b/model.dart';
 import 'package:flutter/material.dart';
 import 'database.dart';
@@ -88,7 +89,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
         onPressed: () {},
         tooltip: 'Save Changes',
         child: Icon(Icons.check),
-        backgroundColor: Color.fromARGB(255, 180, 20, 20),
+        backgroundColor: CardyBColors.Accent,
       ),
     );
   }
