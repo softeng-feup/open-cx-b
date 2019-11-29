@@ -19,11 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
   flutter_speed_dial: ^1.2.4
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   image_gallery_saver: ^1.1.0
   image_picker: ^0.6.1
   qrscan: ^0.2.17
@@ -51,7 +47,6 @@ flutter:
     - images/logo.png
     - images/feup.jpg
     - images/photo.png
-    - images/white_logo.png
     - images/obama.png
     - images/eduardo.jpg
     - images/white_logo.svg
