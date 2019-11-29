@@ -114,7 +114,7 @@ This section will contain the requirements of the product described as **user**
 **stories**, organized in a global **user story map** with **user roles** or 
 **themes**. They will be added as the project is developed . In the meantime,
 if you are in a project oversight position, as the professors are, you can
-contact us to take a look at our *Trello* project board.
+take a look at our [*Trello* project board](https://trello.com/invite/b/9uMMeBil/f76ed72cb31577e2a3b75704a27ae99e/esof-cardy-%F0%9F%85%B1%EF%B8%8F).
 
 ### Domain model
 ![Cardy B's domain model diagram](domain-model.png)
