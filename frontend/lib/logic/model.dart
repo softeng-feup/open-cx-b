@@ -15,6 +15,9 @@ class Participant {
   List<int> lectures = List();
   List<int> connections = List();
   List<String> cardAttributes = List();
+  int red;
+  int green;
+  int blue;
 
   Participant(
       {this.id,
@@ -32,7 +35,10 @@ class Participant {
       this.cv,
       this.lectures,
       this.cardAttributes,
-      this.connections});
+      this.connections,
+      this.red,
+      this.green,
+      this.blue});
 }
 
 class Sponsor {

@@ -31,23 +31,32 @@ class Database {
       company: 'Influencers C.A.',
       bio: 'Eduardo is the King he is very handsome he programs a lot, xD.',
       twitter: 'edudududu',
-      connections: [1, 3]
+      red: 230,
+      green: 20,
+      blue: 83,
+      connections: [0, 1, 2, 3]
     );
     addParticipant(
       name: 'Chico da Tina',
       email: 'chico@tina.com',
       photo: 'images/photo.png',
       gitHub: 'chico_tina',
-      password: 'freicken'
+      password: 'freicken',
+      red: 20,
+      green: 120,
+      blue: 83,
     );
     addParticipant(
       name: 'João Matos',
-      email: 'jopoaopaomapatos@gpemaipail.cocom',
+      email: 'jopoaopao@gpemaipail.cocom',
       photo: 'images/photo.png',
       gitHub: 'joaonmatos',
       password: 'jadiziaaminhaavo:zas!',
       linkedIn: 'joaomatosofficial2019',
-      twitter: 'joaozinhodascouves'
+      twitter: 'joaozinhodascouves',
+      red: 69,
+      green: 130,
+      blue: 20,
     );
     addParticipant(
       name: 'Mimi',
@@ -55,7 +64,10 @@ class Database {
       photo: 'images/feup.jpg',
       gitHub: 'miguel',
       password: 'miguel',
-      linkedIn: 'miguel'
+      linkedIn: 'miguel',
+      red: 230,
+      green: 20,
+      blue: 83,
     );
   }
 
@@ -94,7 +106,11 @@ class Database {
       String cv,
       List<int> lectures,
       List<String> cardAttributes,
-      List<int> connections}) {
+      List<int> connections,
+      int red,
+      int green,
+      int blue,
+      }) {
     int id = _nextParticipantId++;
     var participant = Participant(
         id: id,
@@ -111,7 +127,11 @@ class Database {
         cv: cv,
         lectures: lectures,
         cardAttributes: cardAttributes,
-        connections: connections);
+        connections: connections,
+        red: red,
+        green: green,
+        blue: blue,
+    );
     participants[id] = participant;
   }
 }
