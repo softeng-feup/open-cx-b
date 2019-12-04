@@ -3,6 +3,7 @@ import 'package:cardy_b/colors.dart';
 import 'package:cardy_b/logic/app_state.dart';
 import 'package:cardy_b/logic/database.dart';
 import 'package:cardy_b/pages/own_profile_display.dart';
+import 'package:cardy_b/pages/own_business_card_display.dart';
 import 'package:cardy_b/qr_reader.dart';
 import 'package:cardy_b/widget/app_bar.dart';
 import 'package:flutter/material.dart';
@@ -60,28 +61,9 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  /*A testar o porquê de isto não funcionar assim*/
-  /*void test(BuildContext context) {
-    SpeedDial (
-        backgroundColor: Colors.blue,
-        children: [
-          SpeedDialChild (
-            child: Icon(Icons.code),
-            backgroundColor: Colors.red,
-            label: "QR Code",
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => QrReader()),
-          )
-        )
-      ],
-    );
-  }*/
-
   List<Widget> _getBusinessCard(BuildContext context) {
     var user = Database().getParticipantById(AppState().userid);
     var cards = user.connections.map( (connection) => BusinessCard.fromParticipant(Database().getParticipantById(connection)));
-
 
     List<Widget> cardList = new List();
 
@@ -214,10 +196,9 @@ Widget _getCardInfo(BuildContext context, card){
                         ),
                       )
                   ),
-                ]
-                )
-            ),
                 ])
+            ),
+          ])
       );
 }
 
@@ -250,20 +231,20 @@ class ProfileCard extends StatelessWidget {
                 ),
                 Expanded(
                     child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Container(
-                      child: Text(p.name,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                      Container(
+                        child: Text(p.name,
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                               fontSize: 28)),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 4),
-                      child: Row(
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 4),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             FlatButton(
@@ -281,7 +262,14 @@ class ProfileCard extends StatelessWidget {
                                       color: Colors.white)),
                             ),
                             FlatButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          MyBusinessCardDisplayPage()),
+                                );
+                              },
                               child: Text('Display Card',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,

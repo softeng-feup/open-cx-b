@@ -24,53 +24,53 @@ class ProfileDisplay extends StatelessWidget {
     var otherWidgets = OptionalFieldsDisplay(otherFields);
     return SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-      Container(
-        padding: EdgeInsets.only(
-            top: 0.1 * MediaQuery.of(context).size.height,
-            left: 0.3 * MediaQuery.of(context).size.width,
-            right: 0.3 * MediaQuery.of(context).size.width),
-        child: ClipRRect(
-          borderRadius: new BorderRadius.circular(1000.0),
-          child: Image.asset(photo),
-        ),
-      ),
-      Text(
-        name,
-        style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-      ),
-      Padding(
-        padding: EdgeInsets.all(0.02 * MediaQuery.of(context).size.height),
-      ),
-      Container(
-          padding: EdgeInsets.symmetric(
-              horizontal: 0.1 * MediaQuery.of(context).size.width),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            Container(
-              /*padding: EdgeInsets.only(
-                            top: 0.03 * MediaQuery.of(context).size.width,
-                            right: 0.65 * MediaQuery.of(context).size.width,
-                          ),*/
-              child: Text(
-                "Email",
-                style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
+          Container(
+            padding: EdgeInsets.only(
+                top: 0.1 * MediaQuery.of(context).size.height,
+                left: 0.3 * MediaQuery.of(context).size.width,
+                right: 0.3 * MediaQuery.of(context).size.width),
+            child: ClipRRect(
+              borderRadius: new BorderRadius.circular(1000.0),
+              child: Image.asset(photo),
             ),
-            Container(
-                padding: EdgeInsets.only(
-                    top: 0.01 * MediaQuery.of(context).size.width),
-                child: Text(
-                  email,
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 18,
-                  ),
-                ))
-          ])),
-      otherWidgets
+          ),
+          Text(
+            name,
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+          ),
+          Padding(
+            padding: EdgeInsets.all(0.02 * MediaQuery.of(context).size.height),
+          ),
+          Container(
+              padding: EdgeInsets.symmetric(
+                  horizontal: 0.1 * MediaQuery.of(context).size.width),
+              child:
+                Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                    Container(
+                      /*padding: EdgeInsets.only(
+                                    top: 0.03 * MediaQuery.of(context).size.width,
+                                    right: 0.65 * MediaQuery.of(context).size.width,
+                                  ),*/
+                      child: Text(
+                        "Email",
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                        padding: EdgeInsets.only(
+                            top: 0.01 * MediaQuery.of(context).size.width),
+                        child: Text(
+                          email,
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 18,
+                          ),
+                        ))
+                  ])),
+          otherWidgets
     ]));
   }
 
@@ -95,29 +95,29 @@ class OptionalFieldsDisplay extends StatelessWidget {
               horizontal: 0.1 * MediaQuery.of(context).size.width),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            Container(
-              //padding: EdgeInsets.all(0.03 * MediaQuery.of(context).size.width,
-              //),
-              child: Text(
-                title,
-                style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                  top: 0.01 * MediaQuery.of(context).size.width),
-              child: Text(
-                content,
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 18,
+                Container(
+                  //padding: EdgeInsets.all(0.03 * MediaQuery.of(context).size.width,
+                  //),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
-            )
-          ])));
+                Container(
+                  padding: EdgeInsets.only(
+                      top: 0.01 * MediaQuery.of(context).size.width),
+                  child: Text(
+                    content,
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 18,
+                    ),
+                  ),
+                )
+              ])));
     });
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start, children: fields);

@@ -1,6 +1,5 @@
 import 'package:cardy_b/logic/model.dart';
 
-
 class BusinessCard {
   int red = 120;
   int green = 30;
