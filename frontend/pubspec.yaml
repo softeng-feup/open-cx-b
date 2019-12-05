@@ -1,5 +1,5 @@
 name: cardy_b
-description: Easy networking through virtual business cards 
+description: Easy networking through virtual business cards
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -14,17 +14,20 @@ description: Easy networking through virtual business cards
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.3.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_speed_dial: ^1.2.4
+  image_gallery_saver: ^1.1.0
+  image_picker: ^0.6.1
+  qrscan: ^0.2.17
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
+  flutter_svg: ^0.15.0
 
 dev_dependencies:
+
   flutter_test:
     sdk: flutter
 
@@ -44,8 +47,9 @@ flutter:
     - images/logo.png
     - images/feup.jpg
     - images/photo.png
-    - images/white_logo.png
-  #  - images/a_dot_ham.jpeg
+    - images/obama.png
+    - images/eduardo.jpg
+    - images/white_logo.svg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

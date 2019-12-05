@@ -1,9 +1,12 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
-import 'businesscard.dart';
-//import 'package:flutter_screenutil/flutter_screenutil.dart'
+import 'dart:typed_data';
 
-void main(){
+import 'package:cardy_b/colors.dart';
+import 'package:cardy_b/logic/app_state.dart';
+import 'package:cardy_b/pages/main_screen.dart';
+import 'package:flutter/material.dart';
+
+void main() {
   runApp(new MaterialApp(
     home: new MyApp(),
   ));
@@ -15,13 +18,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Uint8List bytes = Uint8List(0);
+
   @override
   void initState() {
     super.initState();
+
     new Future.delayed(
         const Duration(seconds: 1, milliseconds: 500),
-            () =>
-            Navigator.push(
+        () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => LoginScreen()),
             ));
@@ -39,13 +44,15 @@ class _MyAppState extends State<MyApp> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 0.2 * MediaQuery.of(context).size.height,
+                padding: EdgeInsets.only(
+                    top: 0.2 * MediaQuery.of(context).size.height,
                     left: 0.1 * MediaQuery.of(context).size.width,
                     right: 0.1 * MediaQuery.of(context).size.width),
                 child: Image.asset('images/feup.jpg'),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 0.1 * MediaQuery.of(context).size.height,
+                padding: EdgeInsets.only(
+                    top: 0.1 * MediaQuery.of(context).size.height,
                     left: 0.2 * MediaQuery.of(context).size.width,
                     right: 0.2 * MediaQuery.of(context).size.width),
                 child: Image.asset('images/logo.png'),
@@ -61,517 +68,184 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class LoginScreen extends StatelessWidget {
+
+class LoginScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white,
-      resizeToAvoidBottomPadding: true,
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 0.05 * MediaQuery.of(context).size.height,
-                    left: 0.01 * MediaQuery.of(context).size.width,
-                    right: 0.5 * MediaQuery.of(context).size.width),
-                child: Image.asset('images/logo.png'),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 0.1 * MediaQuery.of(context).size.height,
-                  left: 0.1 * MediaQuery.of(context).size.width,
-                  right: 0.1 * MediaQuery.of(context).size.width,
-                ),
-                child: Container(
-
-                  width: double.infinity,
-                  height: 0.4 * MediaQuery.of(context).size.height,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black54,
-                            offset: Offset(0.0, 15.0),
-                            blurRadius: 15.0
-                        )
-                      ]
-
-                  ),
-                ),
-              ),
-              Spacer(),
-              ButtonBar(
-                children: <Widget>[
-                  const RaisedButton(
-                    onPressed: null,
-                    child: Text(
-                      'Login',
-                      style: TextStyle(fontSize: 20)
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                    RaisedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => MainScreen()),
-                        );
-                      },
-                      child: const Text(
-                      'Skip Login',
-                      style: TextStyle(fontSize: 20)
-                    ),
-                  ),
-                ]
-              ),
-              Expanded(
-                child: Container(),
-              ),
-            ],
-          ),
-          SizedBox(
-              height: 0.5 * MediaQuery.of(context).size.height
-            ),
-        ],
-      ),
-    );
-  }
+  State<StatefulWidget> createState() => new _LoginPageState();
 }
 
-class MainScreen extends StatelessWidget {
-  @override
-  final List<String> entries = <String>['A', 'B', 'C','A', 'B', 'C','A', 'B', 'C','A', 'B', 'C'];
-  final List<int> colorCodes = <int>[600, 500, 100,600, 500, 100,600, 500, 100,600, 500, 100];
-  Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white,
-      resizeToAvoidBottomPadding: true,
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 180, 0, 0),
-        title: Image.asset('images/white_logo.png'),
-        centerTitle: true
-      ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-              padding: EdgeInsets.only(top: 0.01 * MediaQuery.of(context).size.height,),
-          ),
-          Container(
-              alignment: Alignment.center,
-              child: Container(
-                padding: EdgeInsets.all(0.025 * MediaQuery.of(context).size.height,),
-                height: 0.2 * MediaQuery.of(context).size.height,
-                width: 0.55 * MediaQuery.of(context).size.height,
-                child:Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.all(0.02 * MediaQuery.of(context).size.height,),
-                        height: 0.15 * MediaQuery.of(context).size.height,
-                        width: 0.15 * MediaQuery.of(context).size.height,
-                        child: ClipRRect(
-                          borderRadius: new BorderRadius.circular(100.0),
-                          child: Image.asset('images/photo.png'),
-                        ),
-                      ),
-                      Container(
-                        child: Text(
-                            'Chico da Tina ',
-                            textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontWeight: FontWeight.bold)
-                        ),
-                      ),
-                      RaisedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Profile()),
-                          );
-                        },
-                        child: Text(
-                            'Profile',
-                            style: TextStyle(fontSize: 20)
-                        ),
-                      ),
-                    ]
-                ),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 180, 20, 20),
-                  boxShadow:[
-                    BoxShadow(
-                        color: Colors.black54,
-                        offset: Offset(0.0, 10.0),
-                        blurRadius: 10.0
-                    ),
-                  ],
-                ),
-              )
-          ),
-          Container(
-            height: 1 * MediaQuery.of(context).size.width,
-            child: ListView.separated(
-              padding: const EdgeInsets.all(8),
-              itemCount: entries.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 50,
-                  color: Colors.amber[colorCodes[index]],
-                  child: Center(child: Text('Entry ${entries[index]}')),
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) => const Divider(),
-            ),
-          ),
-          Expanded(
-            child: Container(),
-          ),
-          Container(
-            alignment: Alignment.bottomRight,
-            padding: EdgeInsets.only(bottom: 0.02 * MediaQuery.of(context).size.height,
-                right: 0.1 * MediaQuery.of(context).size.width),
+// Used for controlling whether the user is loggin or creating an account
+enum FormType {
+  login,
+  register
+}
 
-            child:Container(
-              child: cardOptions(),
-            ),
-          ),
-        ],
-      )
+class _LoginPageState extends State<LoginScreen> {
 
-      /*Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 0.01 * MediaQuery.of(context).size.height,),
-                child:
-              ),
-              Container(
-                alignment: Alignment.center,
-                child: Container(
-                  padding: EdgeInsets.all(0.025 * MediaQuery.of(context).size.height,),
-                  height: 0.2 * MediaQuery.of(context).size.height,
-                  width: 0.55 * MediaQuery.of(context).size.height,
-                  child:Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.all(0.02 * MediaQuery.of(context).size.height,),
-                        height: 0.15 * MediaQuery.of(context).size.height,
-                        width: 0.15 * MediaQuery.of(context).size.height,
-                        child: ClipRRect(
-                          borderRadius: new BorderRadius.circular(100.0),
-                          child: Image.asset('images/photo.png'),
-                       ),
-                      ),
-                      Container(
-                        child: Text(
-                          'Chico da Tina ',
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold)
-                        ),
-                      ),
-                      RaisedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Profile()),
-                          );
-                        },
-                        child: Text(
-                      'Profile',
-                        style: TextStyle(fontSize: 20)
-                        ),
-                      ),
-                    ]
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 180, 20, 20),
-                    boxShadow:[
-                      BoxShadow(
-                          color: Colors.black54,
-                          offset: Offset(0.0, 10.0),
-                          blurRadius: 10.0
-                      )
-                    ],
-                  ),
-                )
-              ),
-              Container(
-                height: 0.7 * MediaQuery.of(context).size.width,
-                child: ListView(
-                     children: _getBusinessCard(context),
-                  ),
-                ),
-              Expanded(
-                child: Container(),
-              ),
-              Container(
-                alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(bottom: 0.02 * MediaQuery.of(context).size.height,
-                    right: 0.1 * MediaQuery.of(context).size.width),
+  final TextEditingController _emailFilter = new TextEditingController();
+  final TextEditingController _passwordFilter = new TextEditingController();
+  String _email = "";
+  String _password = "";
+  FormType _form = FormType.login; // our default setting is to login, and we should switch to creating an account when the user chooses to
 
-                child:Container(
-                  child: cardOptions(),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),*/
-    );
+  _LoginPageState() {
+    _emailFilter.addListener(_emailListen);
+    _passwordFilter.addListener(_passwordListen);
   }
 
-  List<Widget> _getBusinessCard(BuildContext context){
-    List<BusinessCard> cards =  new List();
-    double numberOfCards = 3;
-    cards.add(BusinessCard(218, 44, 56, 10));
-    cards.add(BusinessCard(34, 111, 84, 20));
-    cards.add(BusinessCard(135, 195, 143, 30));
-    cards.add(BusinessCard(95, 180, 156, 40));
-    cards.add(BusinessCard(5, 255, 60, 50));
-    cards.add(BusinessCard(34, 111, 84, 60));
-    cards.add(BusinessCard(135, 195, 143, 70));
-    cards.add(BusinessCard(95, 180, 156, 80));
-    List<Widget> cardList = new List();
-
-    Widget info = new Container(
-        padding: EdgeInsets.all(10),
-        child:Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(0.02 * MediaQuery.of(context).size.height,),
-              height: 0.15 * MediaQuery.of(context).size.height,
-              width: 0.15 * MediaQuery.of(context).size.height,
-              child: ClipRRect(
-                borderRadius: new BorderRadius.circular(100.0),
-                child: Image.asset('images/photo.png'),
-             ),
-            ),
-            Container(
-              child: Text(
-                'Chico da Tina ',
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            )
-          ]
-        )
-    );
-
-    for (int i = 0; i < numberOfCards; i++) {
-      cardList.add(Positioned(
-        top: 0.2 * MediaQuery.of(context).size.height * i,
-        child: Draggable(
-          onDragEnd: (drag){
-            cardList.removeAt(i);
-          },
-          childWhenDragging: Container(),
-          feedback: Card(
-            elevation: 12,
-            color: Color.fromARGB(255, cards[i].redValue, cards[i].greenValue, cards[i].blueValue),
-            shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 0.55 * MediaQuery.of(context).size.height,
-              height: 0.3 * MediaQuery.of(context).size.height,
-              child: info,
-            ),
-          ),
-          child: Card(
-            elevation: 12,
-            color: Color.fromARGB(255, cards[i].redValue, cards[i].greenValue, cards[i].blueValue),
-            shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 0.55 * MediaQuery.of(context).size.height,
-              height: 0.3 * MediaQuery.of(context).size.height,
-              child: info,
-            ),
-          ),
-        ),
-      ));
+  void _emailListen() {
+    if (_emailFilter.text.isEmpty) {
+      _email = "";
+    } else {
+      _email = _emailFilter.text;
     }
-    return cardList;
   }
-}
 
-Widget cardOptions() => PopupMenuButton(
+  void _passwordListen() {
+    if (_passwordFilter.text.isEmpty) {
+      _password = "";
+    } else {
+      _password = _passwordFilter.text;
+    }
+  }
 
-  itemBuilder: (context) {
-    var list = List<PopupMenuEntry<Object>>();
-    list.add(
-      PopupMenuItem(
-        child: Text("Add Card through:"),
-        value: 1,
-      ),
-    );
-    list.add(
-      PopupMenuDivider(
-        height: 10,
-      ),
-    );
-    list.add(
-      CheckedPopupMenuItem(
-        child: Text(
-          "NFC",
-          style: TextStyle(color: Colors.blueAccent),
-        ),
-        value: 2,
-        checked: true,
-      ),
-    );
+  // Swap in between our two forms, registering and logging in
+  void _formChange () async {
+    setState(() {
+      if (_form == FormType.register) {
+        _form = FormType.login;
+      } else {
+        _form = FormType.register;
+      }
+    });
+  }
 
-    list.add(
-      CheckedPopupMenuItem(
-        child: Text(
-          "Other",
-          style: TextStyle(color: Colors.blueAccent),
-        ),
-        value: 2,
-        checked: true,
-      ),
-    );
-
-    return list;
-  },
-  icon: Icon(
-    Icons.add,
-    size: 50,
-    color: Colors.red,
-  ),
-);
-
-
-class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white,
-      resizeToAvoidBottomPadding: true,
-      appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 180, 0, 0),
-          title: Image.asset('images/white_logo.png'),
-          centerTitle: true
-      ),
-      body: Stack(
+    return new Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: new Container(
+        padding: EdgeInsets.all(16.0),
+        child: new Column(
           children: <Widget>[
-           SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(top: 0.1 * MediaQuery.of(context).size.height,
-                    left: 0.3 * MediaQuery.of(context).size.width,
-                    right: 0.3 * MediaQuery.of(context).size.width),
-                  child: ClipRRect(
-                    borderRadius: new BorderRadius.circular(1000.0),
-                    child: Image.asset('images/photo.png'),
-                ),
-                ),
-                Container(
-                  child: Text(
-                    'Chico da Tina',
-                      style: TextStyle(fontSize: 36,fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 0.03 * MediaQuery.of(context).size.width,
-                    right: 0.7 * MediaQuery.of(context).size.width,),
-                  child: Text(
-                    'Email',
-                    style: TextStyle(color: Colors.grey, fontSize: 18,fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                        left: 0.1 * MediaQuery.of(context).size.width,
-                        right: 0.1 * MediaQuery.of(context).size.width),
-                  child: TextField(
-                    controller: TextEditingController()..text = 'Chicod@tina.com',
-                    onChanged: (text) {
-                      print("Ok: $text");
-                    },
-                  )
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 0.01 * MediaQuery.of(context).size.width,
-                    right: 0.6 * MediaQuery.of(context).size.width,),
-                  child: Text(
-                    'Reset Password',
-                    style: TextStyle(color: Colors.red, fontSize: 12,fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 0.03 * MediaQuery.of(context).size.width,
-                    right: 0.65 * MediaQuery.of(context).size.width,),
-                  child: Text(
-                    'Website',
-                    style: TextStyle(color: Colors.grey, fontSize: 18,fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                    padding: EdgeInsets.only(
-                        left: 0.1 * MediaQuery.of(context).size.width,
-                        right: 0.1 * MediaQuery.of(context).size.width),
-                    child: TextField(
-                      controller: TextEditingController()..text = 'chicotina.com',
-                      onChanged: (text) {
-                        print("Ok: $text");
-                      },
-                    )
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 0.03 * MediaQuery.of(context).size.width,
-                    right: 0.65 * MediaQuery.of(context).size.width,),
-                  child: Text(
-                    'LinkedIn',
-                    style: TextStyle(color: Colors.grey, fontSize: 18,fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                    padding: EdgeInsets.only(
-                        left: 0.1 * MediaQuery.of(context).size.width,
-                        right: 0.1 * MediaQuery.of(context).size.width),
-                    child: TextField(
-                      controller: TextEditingController()..text = 'linkedin.com/tina',
-                      onChanged: (text) {
-                        print("Ok: $text");
-                      },
-                    )
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                      top: 0.04 * MediaQuery.of(context).size.width,
-                      right: 0.52 * MediaQuery.of(context).size.width),
-                  child: RaisedButton(
-                      color: Color.fromARGB(255, 180, 0, 0),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Profile()),
-                        );
-                      },
-                       child: Text(
-                          'Add Field',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ),
-                ),
-              ],
-            )
-           ),
+            _buildTextFields(),
+            _buildButtons(),
           ],
-      )
+        ),
+      ),
     );
   }
+
+
+
+  Widget _buildTextFields() {
+    return new Container(
+      child: new Column(
+        children: <Widget>[
+          new Container(
+            padding: EdgeInsets.only(
+                top: 0.15 * MediaQuery.of(context).size.height,
+                right: 0.1 * MediaQuery.of(context).size.width,
+                left: 0.1 * MediaQuery.of(context).size.width),
+            child: Image.asset('images/logo.png'),
+          ),
+          new Container(
+            child: new TextField(
+              controller: _emailFilter,
+              decoration: new InputDecoration(
+                  labelText: 'Email'
+              ),
+            ),
+          ),
+          new Container(
+            child: new TextField(
+              controller: _passwordFilter,
+              decoration: new InputDecoration(
+                  labelText: 'Password'
+              ),
+              obscureText: true,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildButtons() {
+    if (_form == FormType.login) {
+      return new Container(
+        child: new Column(
+          children: <Widget>[
+            ButtonTheme(
+                buttonColor: CardyBColors.Accent,
+                child: new RaisedButton(
+                  child: new Text('Login'),
+                  onPressed: _loginPressed,
+                ),
+              ),
+            Container(
+              padding: EdgeInsets.only(
+                  right: 0.1 * MediaQuery.of(context).size.width,
+                  left: 0.1 * MediaQuery.of(context).size.width),
+              child: ButtonTheme(
+                child: new FlatButton(
+                  child: new Text('Dont have an account? Register here'),
+                  onPressed: _formChange,
+                ),
+              ),
+            ),
+            new FlatButton(
+              child: new Text('Forgot Password?'),
+              onPressed: _passwordReset,
+            ),
+            new RaisedButton(
+              child: new Text('Skip Login'),
+              onPressed: _skipLogin,
+            ),
+          ],
+        ),
+      );
+    } else {
+      return new Container(
+        child: new Column(
+          children: <Widget>[
+            new RaisedButton(
+              child: new Text('Create an Account'),
+              onPressed: _createAccountPressed,
+            ),
+            new FlatButton(
+              child: new Text('Have an account? Click here to login.'),
+              onPressed: _formChange,
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  // These functions can self contain any user auth logic required, they all have access to _email and _password
+
+  void _loginPressed () {
+    print('The user wants to login with $_email and $_password');
+  }
+
+  void _createAccountPressed () {
+    print('The user wants to create an accoutn with $_email and $_password');
+
+  }
+
+  void _passwordReset () {
+    print("The user wants a password reset request sent to $_email");
+  }
+
+  void _skipLogin () {
+    print('The user skipped Login');
+    AppState().userid = 0;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => MainScreen()),
+    );
+  }
+
 }
