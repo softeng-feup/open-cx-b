@@ -39,11 +39,12 @@ class MainScreen extends StatelessWidget {
       floatingActionButton: SpeedDial(
           animatedIcon: AnimatedIcons.menu_close,
           backgroundColor: CardyBColors.Accent,
+          tooltip: "Get a Business Card",
           children: [
             SpeedDialChild(
                 child: Icon(Icons.library_add),
                 backgroundColor: CardyBColors.LightAccent,
-                label: "Get a card",
+                label: "Get a card by QR Code",
                 onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => QrReader()),
@@ -60,7 +61,7 @@ class MainScreen extends StatelessWidget {
             SpeedDialChild(
                 child: Icon(Icons.send),
                 backgroundColor: CardyBColors.LightAccent,
-                label: "Send a card by NFC",
+                label: "Get a card by Link",
                 onTap: () => shareCard(context))
           ]),
     );
