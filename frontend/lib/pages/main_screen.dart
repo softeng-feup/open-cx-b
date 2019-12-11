@@ -49,12 +49,12 @@ class MainScreen extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => QrReader()),
                     )),
             SpeedDialChild(
-                child: Icon(Icons.send),
+                child: Icon(Icons.library_add),
                 backgroundColor: CardyBColors.LightAccent,
                 label: "Get a Card by NFC",
                 onTap: () => shareCard(context)),
             SpeedDialChild(
-                child: Icon(Icons.send),
+                child: Icon(Icons.library_add),
                 backgroundColor: CardyBColors.LightAccent,
                 label: "Get a card by Link",
                 onTap: () => shareCard(context))
