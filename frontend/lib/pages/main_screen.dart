@@ -1,5 +1,6 @@
 import 'package:cardy_b/businesscard.dart';
 import 'package:cardy_b/colors.dart';
+import 'package:cardy_b/display_qr.dart';
 import 'package:cardy_b/logic/app_state.dart';
 import 'package:cardy_b/logic/database.dart';
 import 'package:cardy_b/pages/own_profile_display.dart';
@@ -51,8 +52,12 @@ class MainScreen extends StatelessWidget {
             SpeedDialChild(
                 child: Icon(Icons.library_add),
                 backgroundColor: CardyBColors.LightAccent,
-                label: "Get a Card by NFC",
-                onTap: () => shareCard(context)),
+                label: "Send a card by QR Code",
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QrDisplay()),
+                    )
+            ),
             SpeedDialChild(
                 child: Icon(Icons.library_add),
                 backgroundColor: CardyBColors.LightAccent,
