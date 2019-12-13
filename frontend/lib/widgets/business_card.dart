@@ -1,4 +1,7 @@
+import 'package:cardy_b/logic/app_state.dart';
 import 'package:cardy_b/logic/business_card.dart';
+import 'package:cardy_b/logic/database.dart';
+import 'package:cardy_b/logic/model.dart';
 import 'package:flutter/material.dart';
 
 class BusinessCardWidget extends StatelessWidget {
@@ -8,6 +11,37 @@ class BusinessCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Participant p = Database().getParticipantById(AppState().userid);
+    var selectedAttributes = Map<String, String>();
+    for(var attribute in p.cardAttributes) {
+      switch(attribute) {
+        case 'bio':
+          selectedAttributes['bio'] = p.bio;
+          break;
+        case 'linkedIn':
+          selectedAttributes['linkedIn'] = p.linkedIn;
+          break;
+        case 'twitter':
+          selectedAttributes['twitter'] = p.twitter;
+          break;
+        case 'company':
+          selectedAttributes['company'] = p.company;
+          break;
+        case 'position':
+          selectedAttributes['position'] = p.position;
+          break;
+        case 'website':
+          selectedAttributes['website'] = p.website;
+          break;
+        case 'gitHub':
+          selectedAttributes['gitHub'] = p.gitHub;
+          break;
+        case 'cv':
+          selectedAttributes['cv'] = p.cv;
+          break;
+      }
+    }
+    var attributes = DisplayPersonalInfo(selectedAttributes);
     return Card(
       elevation: 12,
       color: Color.fromARGB(255, card.red, card.green, card.blue),
@@ -18,7 +52,6 @@ class BusinessCardWidget extends StatelessWidget {
           height: 0.3 * MediaQuery.of(context).size.height,
           padding: EdgeInsets.all(10),
           child: Row(
-              //crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.all(
@@ -36,7 +69,7 @@ class BusinessCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                       Text(
-                        card.name,
+                        p.name,
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.bold),
                       ),
@@ -45,83 +78,50 @@ class BusinessCardWidget extends StatelessWidget {
                           top: 0.03 * MediaQuery.of(context).size.width,
                         ),
                         child: Text(
-                          "Email",
+                          "Email: " + p.email,
                           style: TextStyle(
-                              color: Colors.grey,
+                              color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Container(
-                          padding: EdgeInsets.only(
-                              top: 0.01 * MediaQuery.of(context).size.width),
-                          child: Text(
-                            card.email,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
-                      Container(
-                        padding: EdgeInsets.only(
-                          top: 0.01 * MediaQuery.of(context).size.width,
-                        ),
-                        child: Text(
-                          "Twitter",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Container(
-                          child: Text(
-                        card.twitter,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
-                      Container(
-                        child: Text(
-                          "LinkedIn",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Container(
-                          child: Text(
-                        card.linkedIn,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
-                      Container(
-                        child: Text(
-                          "Website",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Container(
-                          child: Text(
-                        card.website,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
+                      attributes,
                     ])),
               ])),
     );
+  }
+}
+
+class DisplayPersonalInfo extends StatelessWidget {
+  final Map<String, String> _fields;
+
+  DisplayPersonalInfo(this._fields);
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> fields = List();
+    _fields.forEach((title, content) {
+      fields.add(
+          Container(
+            padding: EdgeInsets.symmetric(
+                vertical: 0.01 * MediaQuery.of(context).size.height,
+                horizontal: 0.1 * MediaQuery.of(context).size.width),
+            child:
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              Container(
+                child: Text(
+                  title + ": " + content,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ])
+          )
+      );
+    });
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start, children: fields);
   }
 }

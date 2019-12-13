@@ -6,9 +6,6 @@ import 'package:cardy_b/widgets/business_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-//global variable
-String dropdownValue = 'Send Card';
-
 class MyBusinessCardDisplayPage extends StatelessWidget {
   final BusinessCard card;
 
@@ -52,7 +49,9 @@ class MyBusinessCardDisplayPage extends StatelessWidget {
                       .height,
                   //color: Colors.black,
                   child: DropDown())
-            ]));
+            ]
+        )
+    );
   }
 }
 
@@ -101,6 +100,7 @@ class DropDownWidget extends State {
               }).toList(),
             ),
           ]),
-        ));
+        )
+    );
   }
 }
