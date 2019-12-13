@@ -68,25 +68,21 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-
 class LoginScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _LoginPageState();
 }
 
 // Used for controlling whether the user is loggin or creating an account
-enum FormType {
-  login,
-  register
-}
+enum FormType { login, register }
 
 class _LoginPageState extends State<LoginScreen> {
-
   final TextEditingController _emailFilter = new TextEditingController();
   final TextEditingController _passwordFilter = new TextEditingController();
   String _email = "";
   String _password = "";
-  FormType _form = FormType.login; // our default setting is to login, and we should switch to creating an account when the user chooses to
+  FormType _form = FormType
+      .login; // our default setting is to login, and we should switch to creating an account when the user chooses to
 
   _LoginPageState() {
     _emailFilter.addListener(_emailListen);
@@ -110,7 +106,7 @@ class _LoginPageState extends State<LoginScreen> {
   }
 
   // Swap in between our two forms, registering and logging in
-  void _formChange () async {
+  void _formChange() async {
     setState(() {
       if (_form == FormType.register) {
         _form = FormType.login;
@@ -136,8 +132,6 @@ class _LoginPageState extends State<LoginScreen> {
     );
   }
 
-
-
   Widget _buildTextFields() {
     return new Container(
       child: new Column(
@@ -152,17 +146,13 @@ class _LoginPageState extends State<LoginScreen> {
           new Container(
             child: new TextField(
               controller: _emailFilter,
-              decoration: new InputDecoration(
-                  labelText: 'Email'
-              ),
+              decoration: new InputDecoration(labelText: 'Email'),
             ),
           ),
           new Container(
             child: new TextField(
               controller: _passwordFilter,
-              decoration: new InputDecoration(
-                  labelText: 'Password'
-              ),
+              decoration: new InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
           )
@@ -177,12 +167,12 @@ class _LoginPageState extends State<LoginScreen> {
         child: new Column(
           children: <Widget>[
             ButtonTheme(
-                buttonColor: CardyBColors.Accent,
-                child: new RaisedButton(
-                  child: new Text('Login'),
-                  onPressed: _loginPressed,
-                ),
+              buttonColor: CardyBColors.Accent,
+              child: new RaisedButton(
+                child: new Text('Login'),
+                onPressed: _loginPressed,
               ),
+            ),
             Container(
               padding: EdgeInsets.only(
                   right: 0.1 * MediaQuery.of(context).size.width,
@@ -225,27 +215,24 @@ class _LoginPageState extends State<LoginScreen> {
 
   // These functions can self contain any user auth logic required, they all have access to _email and _password
 
-  void _loginPressed () {
+  void _loginPressed() {
     print('The user wants to login with $_email and $_password');
   }
 
-  void _createAccountPressed () {
+  void _createAccountPressed() {
     print('The user wants to create an accoutn with $_email and $_password');
-
   }
 
-  void _passwordReset () {
+  void _passwordReset() {
     print("The user wants a password reset request sent to $_email");
   }
 
-  void _skipLogin () {
+  void _skipLogin() {
     print('The user skipped Login');
     AppState().userid = 0;
     Navigator.push(
       context,
-      MaterialPageRoute(
-          builder: (context) => MainScreen()),
+      MaterialPageRoute(builder: (context) => MainScreen()),
     );
   }
-
 }

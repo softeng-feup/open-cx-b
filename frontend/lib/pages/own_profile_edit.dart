@@ -2,7 +2,7 @@ import 'package:cardy_b/colors.dart';
 import 'package:cardy_b/logic/app_state.dart';
 import 'package:cardy_b/logic/database.dart';
 import 'package:cardy_b/logic/model.dart';
-import 'package:cardy_b/widget/app_bar.dart';
+import 'package:cardy_b/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 
 class ProfileEditScreen extends StatefulWidget {
@@ -76,12 +76,15 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         decoration: new InputDecoration(labelText: 'Email'))),
                 ...otherWidgets,
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 0.1 * MediaQuery.of(context).size.width),
-                      child: RaisedButton(
-                        onPressed: () {},
-                        child: Text('Add Field'),
-                      )
-                    )
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 0.1 * MediaQuery
+                                .of(context)
+                                .size
+                                .width),
+                        child: RaisedButton(
+                          onPressed: () {},
+                          child: Text('Add Field'),
+                        ))
               ])),
         ],
       ),
@@ -97,16 +100,20 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
 
 class ProfileEditorController {
   Participant _p;
+
   ProfileEditorController() {
     var userid = AppState().userid;
     _p = Database().getParticipantById(userid);
   }
+
   void updateUserEmail(String email) {
     _p.email = email;
   }
+
   void updateUserName(String name) {
     _p.name = name;
   }
+
   void updateOptionalField(String key, String value) {
     switch (key) {
       case 'Bio':
@@ -132,6 +139,7 @@ class ProfileEditorController {
         break;
     }
   }
+
   void removeOptionalField(String key) {
     switch (key) {
       case 'Bio':
@@ -158,4 +166,3 @@ class ProfileEditorController {
     }
   }
 }
-
