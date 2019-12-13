@@ -126,7 +126,6 @@ class Database {
       twitter: twitter,
       photo: photo,
       cv: cv,
-      lectures: lectures,
       cardAttributes: cardAttributes,
       connections: connections,
       red: red,
