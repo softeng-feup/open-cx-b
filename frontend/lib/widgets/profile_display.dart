@@ -26,9 +26,18 @@ class ProfileDisplay extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Container(
             padding: EdgeInsets.only(
-                top: 0.1 * MediaQuery.of(context).size.height,
-                left: 0.3 * MediaQuery.of(context).size.width,
-                right: 0.3 * MediaQuery.of(context).size.width),
+                top: 0.1 * MediaQuery
+                    .of(context)
+                    .size
+                    .height,
+                left: 0.3 * MediaQuery
+                    .of(context)
+                    .size
+                    .width,
+                right: 0.3 * MediaQuery
+                    .of(context)
+                    .size
+                    .width),
             child: ClipRRect(
               borderRadius: new BorderRadius.circular(1000.0),
               child: Image.asset(photo),
@@ -39,37 +48,46 @@ class ProfileDisplay extends StatelessWidget {
             style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
           ),
           Padding(
-            padding: EdgeInsets.all(0.02 * MediaQuery.of(context).size.height),
+            padding: EdgeInsets.all(0.02 * MediaQuery
+                .of(context)
+                .size
+                .height),
           ),
           Container(
               padding: EdgeInsets.symmetric(
-                  horizontal: 0.1 * MediaQuery.of(context).size.width),
+                  horizontal: 0.1 * MediaQuery
+                      .of(context)
+                      .size
+                      .width),
               child:
-                Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                    Container(
-                      /*padding: EdgeInsets.only(
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                Container(
+                  /*padding: EdgeInsets.only(
                                     top: 0.03 * MediaQuery.of(context).size.width,
                                     right: 0.65 * MediaQuery.of(context).size.width,
                                   ),*/
-                      child: Text(
-                        "Email",
-                        style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold),
+                  child: Text(
+                    "Email",
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                    padding: EdgeInsets.only(
+                        top: 0.01 * MediaQuery
+                            .of(context)
+                            .size
+                            .width),
+                    child: Text(
+                      email,
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 18,
                       ),
-                    ),
-                    Container(
-                        padding: EdgeInsets.only(
-                            top: 0.01 * MediaQuery.of(context).size.width),
-                        child: Text(
-                          email,
-                          style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 18,
-                          ),
-                        ))
-                  ])),
+                    ))
+              ])),
           otherWidgets
     ]));
   }
@@ -108,7 +126,10 @@ class OptionalFieldsDisplay extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.only(
-                      top: 0.01 * MediaQuery.of(context).size.width),
+                      top: 0.01 * MediaQuery
+                          .of(context)
+                          .size
+                          .width),
                   child: Text(
                     content,
                     style: TextStyle(

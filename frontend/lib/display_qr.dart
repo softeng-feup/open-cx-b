@@ -1,17 +1,13 @@
-import 'dart:io';
-
-import 'package:cardy_b/logic/app_state.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:qrscan/qrscan.dart' as scanner;
-import 'package:flutter/material.dart';
-
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:cardy_b/logic/app_state.dart';
+import 'package:flutter/material.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
+
 import 'logic/database.dart';
 import 'logic/model.dart';
-
 
 class QrDisplay extends StatefulWidget {
   @override
@@ -19,14 +15,12 @@ class QrDisplay extends StatefulWidget {
 }
 
 class _QrDisplay extends State<QrDisplay> {
-
-  static final Participant participant = Database().getParticipantById(AppState().userid);
-
+  static final Participant participant =
+  Database().getParticipantById(AppState().userid);
 
   Uint8List bytes = Uint8List(0);
   TextEditingController _inputController;
   TextEditingController _outputController;
-
 
   @override
   initState() {
@@ -65,11 +59,8 @@ class _QrDisplay extends State<QrDisplay> {
   }
 
   Widget _qrCodeWidget(Uint8List bytes, BuildContext context) {
-
-
-
-    final Participant participant = Database().getParticipantById(AppState().userid);
-
+    final Participant participant =
+    Database().getParticipantById(AppState().userid);
 
     _generateBarCode(participant.id.toString());
 
@@ -84,7 +75,8 @@ class _QrDisplay extends State<QrDisplay> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Icon(Icons.verified_user, size: 18, color: Colors.green),
-                  Text('  Your card\'s Qr code' , style: TextStyle(fontSize: 15)),
+                  Text('  Your card\'s Qr code',
+                      style: TextStyle(fontSize: 15)),
                   Spacer(),
                   Icon(Icons.more_vert, size: 18, color: Colors.black54),
                 ],
@@ -92,21 +84,21 @@ class _QrDisplay extends State<QrDisplay> {
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
               decoration: BoxDecoration(
                 color: Colors.black12,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(4), topRight: Radius.circular(4)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(4), topRight: Radius.circular(4)),
               ),
-
-
             ),
-
             Padding(
-              padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 10),
+              padding:
+              EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 10),
               child: Column(
                 children: <Widget>[
                   SizedBox(
                     height: 190,
                     child: bytes.isEmpty
                         ? Center(
-                      child: Text('Empty code ... ', style: TextStyle(color: Colors.black38)),
+                      child: Text('Empty code ... ',
+                          style: TextStyle(color: Colors.black38)),
                     )
                         : Image.memory(bytes),
                   ),
@@ -120,35 +112,43 @@ class _QrDisplay extends State<QrDisplay> {
                           child: GestureDetector(
                             child: Text(
                               'remove',
-                              style: TextStyle(fontSize: 15, color: Colors.blue),
+                              style:
+                              TextStyle(fontSize: 15, color: Colors.blue),
                               textAlign: TextAlign.left,
                             ),
-                            onTap: () => this.setState(() => this.bytes = Uint8List(0)),
+                            onTap: () =>
+                                this.setState(() => this.bytes = Uint8List(0)),
                           ),
                         ),
-                        Text('|', style: TextStyle(fontSize: 15, color: Colors.black26)),
+                        Text('|',
+                            style:
+                            TextStyle(fontSize: 15, color: Colors.black26)),
                         Expanded(
                           flex: 5,
                           child: GestureDetector(
                             onTap: () async {
-                              final success = await ImageGallerySaver.saveImage(this.bytes);
+                              final success =
+                              await ImageGallerySaver.saveImage(this.bytes);
                               SnackBar snackBar;
                               if (success) {
-                                snackBar = new SnackBar(content: new Text('Successful Preservation!'));
+                                snackBar = new SnackBar(
+                                    content:
+                                    new Text('Successful Preservation!'));
                                 Scaffold.of(context).showSnackBar(snackBar);
                               } else {
-                                snackBar = new SnackBar(content: new Text('Save failed!'));
+                                snackBar = new SnackBar(
+                                    content: new Text('Save failed!'));
                               }
                             },
                             child: Text(
                               'save',
-                              style: TextStyle(fontSize: 15, color: Colors.blue),
+                              style:
+                              TextStyle(fontSize: 15, color: Colors.blue),
                               textAlign: TextAlign.right,
                             ),
                           ),
                         ),
                       ],
-
                     ),
                   )
                 ],
@@ -158,19 +158,10 @@ class _QrDisplay extends State<QrDisplay> {
         ),
       ),
     );
-
-
   }
-
-
-
-
-
 
   Future<Uint8List> _generateBarCode(String inputCode) async {
     Uint8List result = await scanner.generateBarCode(inputCode);
     return result;
   }
 }
-
-

@@ -28,7 +28,8 @@ class BusinessCard {
     this.photo = participant.photo ?? 'eduardo.jpg';
     this.website = participant.website ?? 'siteTop.com';
     this.company = participant.company ?? 'Influencers C.A.';
-    this.bio = participant.bio ?? 'Eduardo is the King he is very handsome he programs a lot, xD.';
+    this.bio = participant.bio ??
+        'Eduardo is the King he is very handsome he programs a lot, xD.';
     this.twitter = participant.twitter ?? 'edudududu';
   }
 }

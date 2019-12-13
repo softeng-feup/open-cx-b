@@ -1,7 +1,7 @@
 import 'package:cardy_b/colors.dart';
 import 'package:cardy_b/logic/app_state.dart';
 import 'package:cardy_b/pages/own_profile_edit.dart';
-import 'package:cardy_b/widget/app_bar.dart';
+import 'package:cardy_b/widgets/app_bar.dart';
 import 'package:cardy_b/widgets/profile_display.dart';
 import 'package:flutter/material.dart';
 
