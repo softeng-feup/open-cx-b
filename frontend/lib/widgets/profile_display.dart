@@ -60,34 +60,34 @@ class ProfileDisplay extends StatelessWidget {
                       .size
                       .width),
               child:
-              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                Container(
-                  /*padding: EdgeInsets.only(
-                                    top: 0.03 * MediaQuery.of(context).size.width,
-                                    right: 0.65 * MediaQuery.of(context).size.width,
-                                  ),*/
-                  child: Text(
-                    "Email",
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                    padding: EdgeInsets.only(
-                        top: 0.01 * MediaQuery
-                            .of(context)
-                            .size
-                            .width),
+                Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                  Container(
+                    /*padding: EdgeInsets.only(
+                                      top: 0.03 * MediaQuery.of(context).size.width,
+                                      right: 0.65 * MediaQuery.of(context).size.width,
+                                    ),*/
                     child: Text(
-                      email,
+                      "Email",
                       style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 18,
-                      ),
-                    ))
-              ])),
+                          color: Colors.grey,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Container(
+                      padding: EdgeInsets.only(
+                          top: 0.01 * MediaQuery
+                              .of(context)
+                              .size
+                              .width),
+                      child: Text(
+                        email,
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 18,
+                        ),
+                      ))
+                ])),
           otherWidgets
     ]));
   }

@@ -37,16 +37,20 @@ class Database {
         red: 230,
         green: 20,
         blue: 83,
-        connections: [0, 1, 2, 3]);
+        cardAttributes: ['linkedIn', 'website', 'bio'],
+        connections: [1, 2, 3]
+    );
     addParticipant(
       name: 'Chico da Tina',
       email: 'chico@tina.com',
       photo: 'images/photo.png',
       gitHub: 'chico_tina',
       password: 'freicken',
+      company: 'MTV',
       red: 20,
       green: 120,
       blue: 83,
+      cardAttributes: ['linkedIn', 'gitHub', 'company'],
     );
     addParticipant(
       name: 'João Matos',
@@ -59,6 +63,7 @@ class Database {
       red: 69,
       green: 130,
       blue: 20,
+      cardAttributes: ['linkedIn', 'gitHub', 'twitter'],
     );
     addParticipant(
       name: 'Mimi',
@@ -70,6 +75,7 @@ class Database {
       red: 230,
       green: 20,
       blue: 83,
+      cardAttributes: ['linkedIn', 'gitHub'],
     );
   }
 
@@ -105,7 +111,6 @@ class Database {
     String twitter,
     String photo,
     String cv,
-    List<int> lectures,
     List<String> cardAttributes,
     List<int> connections,
     int red,
@@ -126,7 +131,6 @@ class Database {
       twitter: twitter,
       photo: photo,
       cv: cv,
-      lectures: lectures,
       cardAttributes: cardAttributes,
       connections: connections,
       red: red,
