@@ -38,8 +38,7 @@ class Database {
         bgGreen: 94,
         bgBlue: 35,
         cardAttributes: ['linkedIn', 'website'],
-        connections: [1, 2, 3, 4]
-    );
+        connections: [1, 2, 3, 4]);
     addParticipant(
       name: 'Chico da Tina',
       email: 'chico@tina.com',
@@ -74,13 +73,14 @@ class Database {
       photo: 'images/matosphoto.jpg',
       website: 'joaonmatos.com',
       password: 'jadiziaaminhaavo:zas!',
-      linkedIn: 'joaomatosofficial2019',
-      twitter: 'joaozinhodascouves',
+      linkedIn: 'joaomato',
+      twitter: 'joaozinhos',
       gitHub: 'joaonmatos',
       bgRed: 69,
       bgGreen: 130,
       bgBlue: 20,
-      cardAttributes: ['linkedIn', 'twitter'],
+      cardAttributes: ['email', 'gitHub' 'linkedIn', 'twitter'],
+      wantsPhoto: false,
     );
     addParticipant(
       name: 'Miguel, o Simões',
@@ -117,8 +117,7 @@ class Database {
     return result;
   }
 
-  void addParticipant({
-    String name,
+  void addParticipant({String name,
     String bio,
     String email,
     String password,
@@ -137,8 +136,8 @@ class Database {
     int fgBlue,
     int bgRed,
     int bgGreen,
-    int bgBlue
-  }) {
+    int bgBlue,
+    bool wantsPhoto = true}) {
     int id = _nextParticipantId++;
     var participant = Participant(
       id: id,
@@ -150,18 +149,19 @@ class Database {
       position: position,
       website: website,
       linkedIn: linkedIn,
-        gitHub: gitHub,
+      gitHub: gitHub,
       twitter: twitter,
       photo: photo,
       cv: cv,
       cardAttributes: cardAttributes,
       connections: connections,
-        fgRed: fgRed,
-        fgGreen: fgGreen,
-        fgBlue: fgBlue,
-        bgRed: bgRed,
-        bgGreen: bgGreen,
-        bgBlue: bgBlue
+      fgRed: fgRed,
+      fgGreen: fgGreen,
+      fgBlue: fgBlue,
+      bgRed: bgRed,
+      bgGreen: bgGreen,
+      bgBlue: bgBlue,
+      wantsPhoto: wantsPhoto,
     );
     participants[id] = participant;
   }

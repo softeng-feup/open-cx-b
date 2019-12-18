@@ -10,6 +10,7 @@ class BusinessCard {
   String name;
   String photo;
   Map<String, String> fields;
+  int id;
 
   BusinessCard.fromParticipant(Participant p) {
     this.background = (p.bgRed != null && p.bgGreen != null && p.bgBlue != null)
@@ -18,8 +19,9 @@ class BusinessCard {
     this.foreground = (p.fgRed != null && p.fgGreen != null && p.fgBlue != null)
         ? Color.fromARGB(255, p.fgRed, p.fgGreen, p.fgBlue)
         : Colors.white;
-    this.photo = p.photo;
+    this.photo = p.wantsPhoto ? p.photo : null;
     this.name = p.name;
+    this.id = id;
     this.fields =
     LinkedHashMap<String, String>.fromEntries(p.cardAttributes.map((field) {
       switch (field) {

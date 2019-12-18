@@ -20,6 +20,7 @@ class Participant {
   int bgRed;
   int bgGreen;
   int bgBlue;
+  bool wantsPhoto = true;
 
   Participant(
       {this.id,
@@ -42,6 +43,6 @@ class Participant {
         this.fgBlue,
         this.bgRed,
         this.bgGreen,
-        this.bgBlue});
+        this.bgBlue,
+        this.wantsPhoto});
 }
-
