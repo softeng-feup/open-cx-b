@@ -34,10 +34,10 @@ class Database {
         company: 'Cardy B Inc',
         bio: 'Hello all, I am Eduardo and I love mashed potatos',
         twitter: 'edudududu',
-        red: 240,
-        green: 94,
-        blue: 35,
-        cardAttributes: ['linkedIn', 'website', 'bio'],
+        bgRed: 240,
+        bgGreen: 94,
+        bgBlue: 35,
+        cardAttributes: ['linkedIn', 'website'],
         connections: [1, 2, 3, 4]
     );
     addParticipant(
@@ -50,10 +50,10 @@ class Database {
       linkedIn: 'MinhoTrapstar',
       twitter: 'TriangleChest',
       website: 'freicken.co.uk',
-      red: 20,
-      green: 120,
-      blue: 83,
-      cardAttributes: ['linkedIn', 'gitHub', 'company'],
+      bgRed: 20,
+      bgGreen: 120,
+      bgBlue: 83,
+      cardAttributes: ['company', 'email', 'gitHub', 'linkedIn', 'website'],
     );
     addParticipant(
       name: 'João Macedo',
@@ -63,9 +63,9 @@ class Database {
       password: 'jadiziaaminhaavo:zas!',
       linkedIn: 'cedo_networking',
       twitter: 'cedo_do_sitio',
-      red: 240,
-      green: 94,
-      blue: 35,
+      bgRed: 240,
+      bgGreen: 94,
+      bgBlue: 35,
       cardAttributes: ['linkedIn', 'twitter'],
     );
     addParticipant(
@@ -76,10 +76,11 @@ class Database {
       password: 'jadiziaaminhaavo:zas!',
       linkedIn: 'joaomatosofficial2019',
       twitter: 'joaozinhodascouves',
-      red: 69,
-      green: 130,
-      blue: 20,
-      cardAttributes: ['linkedIn', 'gitHub', 'twitter'],
+      gitHub: 'joaonmatos',
+      bgRed: 69,
+      bgGreen: 130,
+      bgBlue: 20,
+      cardAttributes: ['linkedIn', 'twitter'],
     );
     addParticipant(
       name: 'Miguel, o Simões',
@@ -90,10 +91,10 @@ class Database {
       linkedIn: 'xX_miguel_Xx',
       website: 'xX_miguel_Xx',
       twitter: 'xX_miguel_Xx',
-      red: 230,
-      green: 20,
-      blue: 83,
-      cardAttributes: ['linkedIn', 'gitHub'],
+      bgRed: 230,
+      bgGreen: 20,
+      bgBlue: 83,
+      cardAttributes: ['linkedIn'],
     );
   }
 
@@ -131,9 +132,12 @@ class Database {
     String cv,
     List<String> cardAttributes,
     List<int> connections,
-    int red,
-    int green,
-    int blue,
+    int fgRed,
+    int fgGreen,
+    int fgBlue,
+    int bgRed,
+    int bgGreen,
+    int bgBlue
   }) {
     int id = _nextParticipantId++;
     var participant = Participant(
@@ -146,14 +150,18 @@ class Database {
       position: position,
       website: website,
       linkedIn: linkedIn,
+        gitHub: gitHub,
       twitter: twitter,
       photo: photo,
       cv: cv,
       cardAttributes: cardAttributes,
       connections: connections,
-      red: red,
-      green: green,
-      blue: blue,
+        fgRed: fgRed,
+        fgGreen: fgGreen,
+        fgBlue: fgBlue,
+        bgRed: bgRed,
+        bgGreen: bgGreen,
+        bgBlue: bgBlue
     );
     participants[id] = participant;
   }

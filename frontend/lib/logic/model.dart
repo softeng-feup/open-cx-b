@@ -14,9 +14,12 @@ class Participant {
   String cv;
   List<int> connections = List();
   List<String> cardAttributes = List();
-  int red;
-  int green;
-  int blue;
+  int fgRed;
+  int fgGreen;
+  int fgBlue;
+  int bgRed;
+  int bgGreen;
+  int bgBlue;
 
   Participant(
       {this.id,
@@ -34,8 +37,11 @@ class Participant {
       this.cv,
       this.cardAttributes,
       this.connections,
-      this.red,
-      this.green,
-      this.blue});
+        this.fgRed,
+        this.fgGreen,
+        this.fgBlue,
+        this.bgRed,
+        this.bgGreen,
+        this.bgBlue});
 }
 
