@@ -11,7 +11,7 @@ class BusinessCardEditScreen extends StatefulWidget {
 }
 
 class _BusinessCardEditScreenState extends State<BusinessCardEditScreen> {
-  List<Widget> _checkboxes;
+  List<Widget> _checkboxes = getCheckboxes();
 
 
   void _onReorder(int oldIndex, int newIndex) {
@@ -23,7 +23,7 @@ class _BusinessCardEditScreenState extends State<BusinessCardEditScreen> {
     // Make sure there is a scroll controller attached to the scroll view that contains ReorderableSliverList.
     // Otherwise an error will be thrown.
   Widget build(BuildContext context) {
-      _checkboxes = getCheckboxes(context);
+
       ScrollController _scrollController = PrimaryScrollController.of(context) ?? ScrollController();
       return Scaffold(
           backgroundColor: Colors.white,
@@ -42,7 +42,7 @@ class _BusinessCardEditScreenState extends State<BusinessCardEditScreen> {
     }
 }
 
-List<Widget> getCheckboxes(BuildContext context){
+List<Widget> getCheckboxes(){
   var db = Database();
   final int _userId = AppState().userid;
   var p = db.getParticipantById(_userId);
@@ -72,14 +72,19 @@ List<Widget> getCheckboxes(BuildContext context){
     _fields.forEach((title, content) {
       fields.add(Container(
           padding: EdgeInsets.symmetric(
-              vertical: 0.01 * MediaQuery.of(context).size.height,
-              horizontal: 0.1 * MediaQuery.of(context).size.width),
-          child:Column(
+              vertical: 1,
+              horizontal: 0.1,),
+          child: Flex(crossAxisAlignment: CrossAxisAlignment.start,
+            direction: Axis.horizontal,
             children: <Widget>[
+              Expanded( child:
               Checkbox(
                   value: rememberMe,
                   onChanged: _onRememberMeChanged
-              ),
+              ),),
+          Expanded(
+              flex: 5,
+              child:
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
                 Container(
                   //padding: EdgeInsets.all(0.03 * MediaQuery.of(context).size.width,
@@ -94,10 +99,7 @@ List<Widget> getCheckboxes(BuildContext context){
                 ),
                 Container(
                   padding: EdgeInsets.only(
-                      top: 0.01 * MediaQuery
-                          .of(context)
-                          .size
-                          .width),
+                      top: 0.01 ),
                   child: Text(
                     content,
                     style: TextStyle(
@@ -106,43 +108,10 @@ List<Widget> getCheckboxes(BuildContext context){
                     ),
                   ),
                 )
-            ])
+            ])),
             ],
           )
           ));
     });
     return fields;
-
 }
-/*
-  @override
-  Widget build(BuildContext context) {
-    Participant p = Database().participants[AppState().userid];
-    return Scaffold (
-      backgroundColor: Colors.white,
-      resizeToAvoidBottomPadding: true,
-      appBar: CardyBAppBar(pageTitle: 'Edit Business Card'),
-      body: new ListView.builder(
-        itemCount: p.cardAttributes.length,
-        itemBuilder: (BuildContext context, int index) {
-          return new Card(
-            child: new Container(
-              padding: EdgeInsets.all(10.0),
-              child: new Column(
-                children: <Widget>[
-                  new CheckboxListTile(
-                    value: false,
-                    title: new Text('Field $index'),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    /*Apply function here*/
-                  )
-                ],
-              ),
-            )
-          );
-        },
-      )
-    );
-  }
-}
-*/
