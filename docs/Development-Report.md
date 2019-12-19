@@ -173,4 +173,5 @@ This section contains the requirements for the product, described as **user**
 
 We used a Trello board as our task management tool. You can have a look at it at
 the following URL:
+
 https://trello.com/invite/b/9uMMeBil/f76ed72cb31577e2a3b75704a27ae99e/esof-cardy-%F0%9F%85%B1%EF%B8%8F
