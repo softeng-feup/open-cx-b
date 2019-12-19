@@ -81,17 +81,17 @@ class BusinessCardWidget extends StatelessWidget {
         .height;
     var photo = card.photo != null
         ? Container(
-      padding: EdgeInsets.all(0.02 * MediaQuery
-          .of(context)
-          .size
-          .height),
-      height: photoSize,
-      width: photoSize,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(100.0),
-        child: Image.asset(card.photo),
-      ),
-    )
+            padding: EdgeInsets.all(0.02 * MediaQuery.
+                of(context).
+                size.
+                height),
+            height: photoSize,
+            width: photoSize,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100.0),
+              child: Image.asset(card.photo),
+            ),
+          )
         : null;
 
     var name = Text(

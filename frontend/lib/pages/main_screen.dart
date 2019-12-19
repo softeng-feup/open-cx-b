@@ -109,40 +109,41 @@ class ProfileCard extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 4),
                           child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            FlatButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              FlatButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
                                       builder: (context) =>
                                           OwnProfileDisplayPage()),
-                                );
-                              },
-                              child: Text('View Profile',
+                                  );
+                                },
+                                child: Text('View Profile',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white)),
-                            ),
-                            FlatButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
+                              ),
+                              FlatButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
                                       builder: (context) =>
                                           MyBusinessCardDisplayPage()),
-                                );
-                              },
-                              child: Text('Display Card',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white)),
-                            )
-                          ]),
+                                  );
+                                },
+                                child: Text('Display Card',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white)),
+                              )
+                            ]),
+                        )
+                      ],
                     )
-                  ],
-                ))
+                )
               ]),
           decoration: BoxDecoration(
             color: CardyBColors.Accent,

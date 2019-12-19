@@ -94,7 +94,7 @@ class Database {
       bgRed: 230,
       bgGreen: 20,
       bgBlue: 83,
-      cardAttributes: ['linkedIn'],
+      cardAttributes: ['email','linkedIn','gitHub'],
     );
   }
 
