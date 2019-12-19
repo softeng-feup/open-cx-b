@@ -3,6 +3,7 @@ import 'package:cardy_b/logic/business_card.dart';
 import 'package:cardy_b/logic/database.dart';
 import 'package:cardy_b/widgets/app_bar.dart';
 import 'package:cardy_b/widgets/business_card.dart';
+import 'package:cardy_b/pages/own_business_card_edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,10 @@ class MyBusinessCardDisplayPage extends StatelessWidget {
             children: <Widget>[
               BusinessCardWidget(card),
               RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context1) => BusinessCardEditScreen()));
+                },
                 child: Text('Edit Business Card',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
