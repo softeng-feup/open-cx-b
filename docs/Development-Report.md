@@ -9,18 +9,18 @@ kind of Software Development Report (see
 organized by discipline (as of RUP):
 
 * Business modeling
-  * [Product Vision](#Product-Vision)
-  * [Elevator Pitch](#Elevator-Pitch)
+  * [Product Vision](#product-vision)
+  * [Elevator Pitch](#elevator-pitch)
 * Requirements
-  * [Use Case Diagram](#Use-case-diagram)
-  * [User stories](#User-stories)
-  * [Domain model](#Domain-model)
+  * [Use Case Diagram](#use-case-diagram)
+  * [User stories](#user-stories)
+  * [Domain model](#domain-model)
 * Architecture and Design
-  * [Architectural and design decisions]()
-  * [Technological architecture]()
-  * [Logical architecture]()
+  * [Architectural and design decisions](#architectural-and-design-decisions)
+  * [Technological architecture](#technological-architecture)
+  * [Logical architecture](#logical-architecture)
 * Project management
-  * [Tasks management tool](#Task-Management-Tool)
+  * [Tasks management tool](#task-management-tool)
 
 So far, contributions are exclusively made by the initial team, but we hope to
 open them to the community, in all areas and topics: requirements, technologies,
@@ -167,6 +167,27 @@ This section contains the requirements for the product, described as **user**
 
 ##### Own Card Edit
 ![Own card edit](ui-mockups/own-card-edit.png)
+
+# Architecture and Design
+## Architectural and Design Decisions
+Following the general trend of the whole openCX project, we decided to provide a
+basic backend architecture and build upon it in our front end. To that end, we
+planned to have a Cardy B backend, a Cardy B app and, if time permitted, an
+embedded Cardy B client for NFC enabled devices (e.g. Raspberry Pi with add-on
+sensor). Generally, we aimed to produce relatively independent UI components, so
+that we could reuse them in the openCX frontend app.
+
+## Technological Architecture
+We decided to use MongoDB/Express/Node.js for our backend. It would provide us
+with just the necessary components to perform CRUD operations on a REST API.
+
+We decided to use Flutter for our frontend. It is a modern framework that
+provides us with a streamlined way of building a cross-platform mobile app.
+
+## Logical Architecture
+We can subdivide our solution in the following logical components:
+
+![Package Diagram](package-diagram.png)
 
 # Project Management
 ## Task Management Tool
