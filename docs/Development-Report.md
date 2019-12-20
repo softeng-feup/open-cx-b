@@ -42,21 +42,13 @@ represented a solution to the circumstances at hand. They are:
  * Compact and straight to the point
  * A medium to showcase appealing design
 
-What if you could bridge these advantages and modern technologies to have your
+What if we could bridge these advantages and modern technologies to have our
 cake and eat it too? *Cardy B* aims to do just that.
 
 It is an innovative digital networking system, using the latest in interactive
 technologies to provide seamless, paperless networking to the participants of
-your conference. With this system in place, your users can:
-
- * Create their virtual business card, integrated with their social media, CVs,
-   or portfolios
- * Have a wallet to store their connections right on their phones/conference
-   app/website
- * Exchange information in an intuitive, seamless and convenient way
- * Interacting with smart badges and sponsor stands, making use of the latest in
-   NFC and QR technologies
- * Look cool while doing all of it
+your conference that allows users to create their own virtual business cards,
+and collect other users' business cards in an intuitive, fast, and seamless way.
 
 We understand that sometimes there is an option between interaction and
 convenience, but with *Cardy B* you can get them both, you don't need to choose.
@@ -108,65 +100,18 @@ As a representative of a sponsor, in addition to all of the above, also needs:
 
 ### User stories
 
-This section contains the requirements for the product, described as **user**
-**stories**, organized in a global **user story map** with **user roles** or
-**themes**. They will be added as the project is developed.
-
-#### Complete
-
-  * 'As a conference attendee, I want to be able to keep track of the people I
-    interacted with, so that I can reach out to them in the near future more
-    easily.'
-
-#### Good
-
-  * 'As a conference attendee, I want to be able to put up all my important
-    information (e.g. LinkedIn, CV link, GitHub) in my profile, so that other
-    attendees can learn more about me.'
-  * 'As a conference attendee, I want to quickly assemble a clean business card
-    so that I don't waste any time in preparations.'
-
-#### In Progress
-
-  * 'As a user, I want to be able to add a user to my connections by scanning a
-    QR code, so that I do not waste time searching for them.'
-  * 'As a user, I want to generate a QR code so that I can easily and quickly
-    share my information with other participants.'
+We organized the requirements of our solution by having them described as
+**user** **stories**, organized in a global **user story map** with **user
+roles** or **themes**. You can find them in our [project
+board](#task-management-tool).
 
 ### Domain model
+The following diagram illustrates the domain of our problem.
+
 ![Cardy B's domain model diagram](domain-model.png)
 
-### Frontend Mockups
-#### Onboarding / Login
-##### Onboarding - Screen 0
-![Onboarding Screen 0](ui-mockups/onboarding-0.png)
-
-##### Onboarding - Screen 1
-![Onboarding Screen 1](ui-mockups/onboarding-1.png)
-
-##### Login Screen
-![Login Screen](ui-mockups/onboarding-login.png)
-
-#### Wallet / Connection Management
-##### Wallet Screen
-![Wallet Screen](ui-mockups/wallet.png)
-
-##### Connection Adding
-![Add Card to Wallet](ui-mockups/wallet-add-card.png)
-
-#### Profile Management
-##### Own Profile View
-![Own profile view](ui-mockups/own-profile-view.png)
-
-##### Own Profile Edit
-![Own profile edit](ui-mockups/own-profile-edit.png)
-
-#### Card Management
-##### Own Card View
-![Own card view](ui-mockups/own-card.png)
-
-##### Own Card Edit
-![Own card edit](ui-mockups/own-card-edit.png)
+For the time being, our solution aimed to tackle a subset of this domain,
+specifically participant profile and cards, and the connection between users.
 
 # Architecture and Design
 ## Architectural and Design Decisions
@@ -188,6 +133,15 @@ provides us with a streamlined way of building a cross-platform mobile app.
 We can subdivide our solution in the following logical components:
 
 ![Package Diagram](package-diagram.png)
+
+The front end app, developed in Flutter, is logically divided in a model
+package, which implements the business logic requirements, a widget module
+implementing a collection of GUI widgets that implement relevant aspects of
+interaction between app and user, and a pages module that binds the model and
+the UI, providing a consistent navigation experience between our app.
+
+The backend would provide a REST API that would allow us to provide CRUD
+operations to our front-end, and make the connection with a database.
 
 # Project Management
 ## Task Management Tool
