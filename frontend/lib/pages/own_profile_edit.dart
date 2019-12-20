@@ -11,7 +11,6 @@ class ProfileEditScreen extends StatefulWidget {
 }
 
 class _ProfileEditScreenState extends State<ProfileEditScreen> {
-
   @override
   Widget build(BuildContext context) {
     Participant p = Database().participants[AppState().userid];
