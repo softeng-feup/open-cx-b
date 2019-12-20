@@ -68,50 +68,50 @@ List<Widget> getCheckboxes(){
   }
 
   @override
-  List<Widget> fields = List();
-  _fields.forEach((title, content) {
-    fields.add(Container(
-        padding: EdgeInsets.symmetric(
-          vertical: 1,
-          horizontal: 0.1,),
-        child: Flex(crossAxisAlignment: CrossAxisAlignment.start,
-          direction: Axis.horizontal,
-          children: <Widget>[
-            Expanded( child:
-            Checkbox(
-                value: rememberMe,
-                onChanged: _onRememberMeChanged
-            ),),
-            Expanded(
-                flex: 5,
-                child:
-                Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                  Container(
-                    //padding: EdgeInsets.all(0.03 * MediaQuery.of(context).size.width,
-                    //),
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold),
+    List<Widget> fields = List();
+    _fields.forEach((title, content) {
+      fields.add(Container(
+          padding: EdgeInsets.symmetric(
+              vertical: 1,
+              horizontal: 0.1,),
+          child: Flex(crossAxisAlignment: CrossAxisAlignment.start,
+            direction: Axis.horizontal,
+            children: <Widget>[
+              Expanded( child:
+              Checkbox(
+                  value: rememberMe,
+                  onChanged: _onRememberMeChanged
+              ),),
+          Expanded(
+              flex: 5,
+              child:
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                Container(
+                  //padding: EdgeInsets.all(0.03 * MediaQuery.of(context).size.width,
+                  //),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                      top: 0.01 ),
+                  child: Text(
+                    content,
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 18,
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.only(
-                        top: 0.01 ),
-                    child: Text(
-                      content,
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 18,
-                      ),
-                    ),
-                  )
-                ])),
-          ],
-        )
-    ));
-  });
-  return fields;
+                )
+            ])),
+            ],
+          )
+          ));
+    });
+    return fields;
 }
